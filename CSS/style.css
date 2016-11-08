@@ -264,15 +264,12 @@ table.query{
 
 table.query th{
 	border: 1px solid black;
-    padding: 10;
+    padding: 10px;
     color: gray;
     background-color: #181818;
     white-space: nowrap;
 }
 
-table.query th:hover{
-	background-color: #181818;
-}
 
 table.query td{
 	border-bottom: 1px solid black;
@@ -280,10 +277,12 @@ table.query td{
 	font-size: 14px;
 	width: 10px;
 	white-space: nowrap;
-	height: 40px;
+	height: 20px;
 	color: white;
 	padding: 10px 30px 10px 30px;
 	overflow: hidden;
+    border-right: #282828;
+    border-left: #282828;
 }
 
 table.query td a { 
@@ -330,7 +329,7 @@ table.query td:hover{
 	font-size: 50px;
 	font-weight: normal;
 	font-family: "Raleway", sans-serif;
-	float: left;
+	/*float: left;*/
 }
 
 #artist{
