@@ -6,21 +6,19 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MusicDatabase;
 
-public partial class Tracks : System.Web.UI.Page {
+public partial class GenrePage : System.Web.UI.Page {
     protected void Page_Load(object sender, EventArgs e) {
-        IniTracks();
+        IniGenrePage();
     }
 
-    protected void IniTracks() {
-        gvTracks.DataSource = Track.GetTracks().DefaultView;
-        gvTracks.DataBind();
+    protected void IniGenrePage() {
+        string genreName = Request.QueryString["genreName"];
+        lblGenreName.Text = genreName;
+        gvGenrePage.DataSource = Genre.GetGenreTracks(genreName);
+        gvGenrePage.DataBind();
     }
 
-    protected void gvTracks_RowDataBound(object sender, GridViewRowEventArgs e) {
-        for (int i = 4; i < 9; i++) {
-            e.Row.Cells[i].Visible = false;
-        }
-
+    protected void gvGenrePage_RowDataBound(object sender, GridViewRowEventArgs e) {
         e.Row.Cells[0].Attributes.Add("onclick", "location='AlbumPage.aspx?trackName=" + e.Row.Cells[0].Text + "&albumName=" + e.Row.Cells[2].Text + "'");
         e.Row.Cells[1].Attributes.Add("onclick", "location='ArtistPage.aspx?artistName=" + e.Row.Cells[1].Text + "'");
         e.Row.Cells[2].Attributes.Add("onclick", "location='AlbumPage.aspx?albumName=" + e.Row.Cells[2].Text + "'");

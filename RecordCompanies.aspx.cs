@@ -6,21 +6,19 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MusicDatabase;
 
-public partial class RecordCompanies : System.Web.UI.Page
-{
-    protected void Page_Load(object sender, EventArgs e)
-    {
+public partial class RecordCompanies : System.Web.UI.Page {
+    protected void Page_Load(object sender, EventArgs e) {
         IniRecordCompanies();
     }
 
-    protected void IniRecordCompanies()
-    {
+    protected void IniRecordCompanies() {
         gvRecordCompanies.DataSource = Company.GetCompanies().DefaultView;
         gvRecordCompanies.DataBind();
     }
 
-    protected void gvRecordCompanies_RowDataBound(object sender, GridViewRowEventArgs e)
-    {
+    protected void gvRecordCompanies_RowDataBound(object sender, GridViewRowEventArgs e) {
         e.Row.Cells[3].Visible = false;
+
+        e.Row.Attributes.Add("onclick", "location='CompanyPage.aspx?companyName=" + e.Row.Cells[0].Text + "'");
     }
 }
