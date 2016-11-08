@@ -1,0 +1,78 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Music database</title>
+    <link href="~/CSS/style.css" rel="Stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <nav>
+                <div id="headerBar">
+                    <a href="Home.aspx" id="title-link"><span id="title"><i class="fa fa-home"></i></span></a>Music database        
+               <button class="buttons" id="btnLogin" onclick="window.location.href='Login.aspx'" style="display: default">LOGIN</button>
+                    <button class="buttons" id="btnSignUp" onclick="window.location.href='Register.aspx'" style="display: default">SIGN UP</button>
+                    <button class="buttons" id="btnLogout" onclick="window.location.href='Login.aspx'" style="display: none;">LOG OUT</button>
+                    <p id='loggedAs' style="display: none;">Logged in as </p>
+                </div>
+                <div id="searchBar">
+
+                    <form method='post' action=''>
+
+                        <input id="inputSearch" type="text" autocomplete="off" placeholder="Search" name="search" />
+                        <input class="buttons" id="btnSearchFromDatabase" type="submit" name="btnSearchDatabase" value="Search from database" />
+                    </form>
+                </div>
+            </nav>
+            <div id="container">
+                <div id="sideBar">
+                    <table class="sidebar">
+                        <tr>
+                            <td class="test" onclick="window.location.href='Home.aspx'">Home</td>
+                        </tr>
+                        <tr>
+                            <td onclick="window.location.href='Artists.aspx'">Artists</td>
+                        </tr>
+                        <tr>
+                            <td onclick="window.location.href='Albums.aspx'">Albums</td>
+                        </tr>
+                        <tr>
+                            <td onclick="window.location.href='Tracks.aspx'">Tracks</td>
+                        </tr>
+                        <tr>
+                            <td onclick="window.location.href='Genres.aspx'">Genres</td>
+                        </tr>
+                        <tr>
+                            <td onclick="window.location.href='Record companies'">Record companies</td>
+                        </tr>
+                        <tr>
+                            <td onclick="window.location.href='About.aspx'">About</td>
+                        </tr>
+                        <tr>
+                            <td onclick="window.location.href='Users.aspx'" style="display: none;">Users</td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="content-layout">
+                    <div id="content">
+
+                        <asp:ContentPlaceHolder ID="body" runat="server">
+                        </asp:ContentPlaceHolder>
+
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <div id="footerBar">
+                    <span id="copyright">&copy; Music database 2016</span>
+                    <asp:Button CssClass="buttons" OnClick="btnContact_Click" ID="btnContact" Text="Contact us" runat="server" />
+                </div>
+            </footer>
+        </div>
+    </form>
+</body>
+</html>
