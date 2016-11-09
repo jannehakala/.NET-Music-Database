@@ -23,10 +23,10 @@ public partial class AlbumPage : System.Web.UI.Page {
         string length = array[3].ToString();
         length = length.Substring(1);
 
+        artistLink.Text = array[0];
+        artistLink.NavigateUrl = "ArtistPage.aspx?artistName=" + array[0];
 
-        lblAlbumInfo.Text = "from artist <a href='ArtistPage.aspx?artistName=" + array[0] + "' id='link'>" + "<span style='color:black';>" + array[0] + "</span></a>" +
-            " \u2022 " + array[1] + " \u2022 \n" + array[2] + " tracks, " + length;
-        
+        lblAlbumInfo.Text = "\u2022 " + array[1] + " \u2022 \n" + array[2] + " tracks, " + length;    
 
         lblTrackName.Text = trackName;
 

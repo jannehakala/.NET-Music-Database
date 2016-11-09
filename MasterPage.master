@@ -4,17 +4,19 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <meta charset="utf-8"/>
     <title>Music database</title>
     <link href="~/CSS/style.css" rel="Stylesheet" type="text/css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css" rel="stylesheet" />
-    <meta charset="utf-8">
+    <link rel="shortcut icon" href="http://www.iconeasy.com/icon/png/System/Frenzic%20System/Music.png" />
+   
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
             <nav>
                 <div id="headerBar">
-                    <a href="Home.aspx" id="title-link"><span id="title"><i class="fa fa-home"></i></span></a>Music database        
+                    <a href="Home.aspx" id="title-link"><span id="title"><i class="fa fa-music" aria-hidden="true"></i></span></a>Music database      
                     <asp:Button ID="btnLogin" CssClass="buttons" PostBackUrl="Login.aspx" style="display: default" Text="LOGIN" runat="server"></asp:Button>
                     <asp:Button ID="btnSignUp" CssClass="buttons" PostBackUrl="Register.aspx" style="display: default"  Text="SIGN UP" runat="server"></asp:Button>
                     <asp:Button ID="btnLogout" CssClass="buttons" PostBackUrl="Logout.aspx" style="display: none;" Text="LOG OUT" runat="server"></asp:Button>
@@ -53,8 +55,8 @@
                         <tr>
                             <td onclick="window.location.href='About.aspx'">About</td>
                         </tr>
-                        <tr>
-                            <td onclick="window.location.href='Users.aspx'" style="display: none;">Users</td>
+                        <tr id="users" runat="server">
+                            <td onclick="window.location.href='Users.aspx'">Users</td>
                         </tr>
                     </table>
                 </div>

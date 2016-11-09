@@ -18,9 +18,10 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div id="errorMessageContainer">
+        <div id="errorMessageContainer" runat="server">
             <div id="errorMessage" runat="server"></div>
         </div>
+       
         <div id="formContainerLoginRegister">
             <h1>Login</h1>
             <h3>Music Database</h3>
@@ -31,8 +32,10 @@
             <br />
             <a href="Register.aspx" id="accountQ">Don't have an account? Register here.</a><br />
             <asp:Button ID='btnRegisterLoginForm' OnClick="btnLogin_Click" Text='Login' CssClass="buttons" runat="server" /><br />
-            <asp:Button ID='btnBackToMain' CssClass='buttons' PostBackUrl="Home.aspx" Text="Back to Music database" runat="server"></asp:Button>
+            <asp:Button ID='btnBackToMain' CssClass='buttons' PostBackUrl="Home.aspx" Text="Back to Music database" runat="server"></asp:Button><br />
+            <asp:Label ID="lblMessage" Font-Size="20px" ForeColor="LightGreen" runat="server"></asp:Label>
         </div>
+         
     </form>
 </body>
 </html>

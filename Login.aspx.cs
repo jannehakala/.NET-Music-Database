@@ -25,6 +25,7 @@ public partial class Login : System.Web.UI.Page {
 
                 BLLogin login = new BLLogin(username, password);
                 if (login.LoginUser(out message)) {
+
                     Session["username"] = username;
                     if (login.CheckIfAdmin()) {
                         Session["usertype"] = "admin";
@@ -33,8 +34,10 @@ public partial class Login : System.Web.UI.Page {
                     } else {
                         Session["usertype"] = "guest";
                     }
-
-                    Response.Redirect("Home.aspx");
+                    errorMessageContainer.Style["background-color"] = "green";
+                    errorMessage.InnerText = "Login was successful!";
+                    lblMessage.Text = "You will be redirected automatically.";
+                    Response.AddHeader("REFRESH", "3;URL=Home.aspx");
                 } else {
                     txtPassword.Text = "";
                     txtPassword.Focus();

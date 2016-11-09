@@ -13,7 +13,7 @@ public partial class Register : System.Web.UI.Page {
         txtPassword.Attributes.Add("onkeypress", "button_click(this,'" + this.btnRegisterLoginForm.ClientID + "')");
     }
 
-    private void btnRegister_Click(object sender, EventArgs e) {
+    protected void btnRegisterLoginForm_Click(object sender, EventArgs e) {
         string username = txtUsername.Text;
         string password = txtPassword.Text;
         string repassword = txtRePassword.Text;
@@ -25,8 +25,10 @@ public partial class Register : System.Web.UI.Page {
 
                 BLRegister register = new BLRegister(username, password);
                 if (register.RegisterUser(out message)) {
-                    Response.Redirect("Login.aspx");
+                    errorMessageContainer.Style["background-color"] = "green";
                     errorMessage.InnerText = "Registration was successful!";
+                    lblMessage.Text = "You will be redirected automatically.";
+                    Response.AddHeader("REFRESH", "3;URL=Login.aspx");
                 } else {
                     txtUsername.Text = "";
                     txtPassword.Text = "";
