@@ -15,10 +15,10 @@
             <nav>
                 <div id="headerBar">
                     <a href="Home.aspx" id="title-link"><span id="title"><i class="fa fa-home"></i></span></a>Music database        
-               <button class="buttons" id="btnLogin" onclick="window.location.href='Login.aspx'" style="display: default">LOGIN</button>
-                    <button class="buttons" id="btnSignUp" onclick="window.location.href='Register.aspx'" style="display: default">SIGN UP</button>
-                    <button class="buttons" id="btnLogout" onclick="window.location.href='Login.aspx'" style="display: none;">LOG OUT</button>
-                    <p id='loggedAs' style="display: none;">Logged in as </p>
+                    <asp:Button ID="btnLogin" CssClass="buttons" PostBackUrl="Login.aspx" style="display: default" Text="LOGIN" runat="server"></asp:Button>
+                    <asp:Button ID="btnSignUp" CssClass="buttons" PostBackUrl="Register.aspx" style="display: default"  Text="SIGN UP" runat="server"></asp:Button>
+                    <asp:Button ID="btnLogout" CssClass="buttons" PostBackUrl="Logout.aspx" style="display: none;" Text="LOG OUT" runat="server"></asp:Button>
+                    <p id='loggedAs' style="display: default;" runat="server"></p>
                 </div>
                 <div id="searchBar">
 
@@ -70,7 +70,7 @@
             <footer>
                 <div id="footerBar">
                     <span id="copyright">&copy; Music database 2016</span>
-                    <asp:Button CssClass="buttons" OnClick="btnContact_Click" ID="btnContact" Text="Contact us" runat="server" />
+                    <asp:Button CssClass="buttons" PostBackUrl="About.aspx" ID="btnContact" Text="Contact us" runat="server" />
                 </div>
             </footer>
         </div>
