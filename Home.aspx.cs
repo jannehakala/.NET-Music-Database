@@ -7,6 +7,11 @@ using System.Web.UI.WebControls;
 
 public partial class Home : System.Web.UI.Page {
     protected void Page_Load(object sender, EventArgs e) {
+        string username = (string)Session["username"];
+        pageHeader.InnerText = "Welcome, Guest!";
 
+        if (username != null) {
+            pageHeader.InnerText = "Welcome, " + username + "!";
+        }
     }
 }
