@@ -36,8 +36,8 @@ public partial class Login : System.Web.UI.Page {
                     }
                     errorMessageContainer.Style["background-color"] = "green";
                     errorMessage.InnerText = "Login was successful!";
-                    lblMessage.Text = "You will be redirected automatically.";
-                    Response.AddHeader("REFRESH", "3;URL=Home.aspx");
+                    lblMessage.Text = "Logging in...";
+                    Response.AddHeader("REFRESH", "1.5;URL=Home.aspx");
                 } else {
                     txtPassword.Text = "";
                     txtPassword.Focus();

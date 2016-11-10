@@ -6,7 +6,7 @@
 <head runat="server">
     <title>Music Database | Login</title>
     <link href="~/CSS/style.css" rel="Stylesheet" type="text/css" />
-
+    <link rel="shortcut icon" href="http://www.iconeasy.com/icon/png/System/Frenzic%20System/Music.png" />
     <script>
         function button_click(objTextBox, objBtnID) {
             if (window.event.keyCode == 13) {
@@ -23,8 +23,8 @@
         </div>
        
         <div id="formContainerLoginRegister">
-            <h1>Login</h1>
-            <h3>Music Database</h3>
+            <h1>Music Database</h1>
+            <h2>Login</h2>
             Username:<br />
             <asp:TextBox ID="txtUsername" runat="server"></asp:TextBox><br />
             Password:<br />

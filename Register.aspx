@@ -6,6 +6,7 @@
 <head runat="server">
     <title>Music Database | Register</title>
     <link href="~/CSS/style.css" rel="Stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="http://www.iconeasy.com/icon/png/System/Frenzic%20System/Music.png" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -13,8 +14,8 @@
             <div id="errorMessage" runat="server"></div>
         </div>
         <div id="formContainerLoginRegister">
-            <h1>Register</h1>
-            <h3>Music Database</h3>
+            <h1>Music Database</h1>
+            <h2>Register</h2>
             Username:<br />
             <asp:TextBox ID="txtUsername" runat="server"></asp:TextBox><br />
             Password:<br />

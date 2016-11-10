@@ -27,8 +27,8 @@ public partial class Register : System.Web.UI.Page {
                 if (register.RegisterUser(out message)) {
                     errorMessageContainer.Style["background-color"] = "green";
                     errorMessage.InnerText = "Registration was successful!";
-                    lblMessage.Text = "You will be redirected automatically.";
-                    Response.AddHeader("REFRESH", "3;URL=Login.aspx");
+                    lblMessage.Text = "Registering...";
+                    Response.AddHeader("REFRESH", "1.5;URL=Login.aspx");
                 } else {
                     txtUsername.Text = "";
                     txtPassword.Text = "";
