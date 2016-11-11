@@ -56,7 +56,7 @@
                             <td onclick="window.location.href='About.aspx'">About</td>
                         </tr>
                         <tr id="users" runat="server">
-                            <td onclick="window.location.href='Users.aspx'">Users</td>
+                            <td onclick="window.location.href='User.aspx'">Users</td>
                         </tr>
                     </table>
                 </div>
