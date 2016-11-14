@@ -36,8 +36,11 @@ public partial class EditArtist : System.Web.UI.Page
                 txtArtistName.Text = row.Cells[1].Text;
                 ddlSelectYear.Text = row.Cells[2].Text;
                 ddlSelectCountry.Text = row.Cells[3].Text;
-                //selectedId = int.Parse(row.Cells[4].Text);
-                selectedId = Convert.ToInt32(row.Cells[4].Text);
+                selectedId = int.Parse(row.Cells[4].Text);
+                //selectedId = Convert.ToInt32(row.Cells[4].Text);
+                //selectedId = Artist.GetArtistKey(row.Cells[1].Text);
+                //selectedId = Convert.ToInt64(row.Cells[4].Text);
+                //selectedId = Convert.ToInt16(row.Cells[4].Text);
                 lblMessages.Text = selectedId.ToString();
                 
            
@@ -96,8 +99,10 @@ public partial class EditArtist : System.Web.UI.Page
         {
             string name = txtArtistName.Text;
             int year = Convert.ToInt32(ddlSelectYear.Text);
-            string country = ddlSelectCountry.ToString();
-            Artist.UpdateArtist(89, name, country, year);
+            string country = ddlSelectCountry.Text;
+            
+            //Artist.UpdateArtist(Artist.GetArtistKey(name), name, country, year);
+            Artist.UpdateArtist(89, name, "Sweden", 1990);
             IniEditArtist();
         }
         catch (Exception ex)

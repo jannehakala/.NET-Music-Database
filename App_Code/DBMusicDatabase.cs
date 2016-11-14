@@ -368,6 +368,36 @@ namespace MusicDatabase {
                 throw ex;
             }
         }
+
+        public static int GetSpecificKey(string stringSQL, string name)
+        {
+            int key = 0;
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    conn.Open();
+                    string sql = stringSQL;
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@NAME", name);
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+                    if (rdr.HasRows)
+                    {
+                        while (rdr.Read())
+                        {
+                            key = rdr.GetInt32(0);
+                        }
+                    }
+                    conn.Close();
+                    return key;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
         #endregion
     }
 }
