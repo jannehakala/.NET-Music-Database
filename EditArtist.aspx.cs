@@ -7,109 +7,118 @@ using System.Web.UI.WebControls;
 using MusicDatabase;
 using System.Data;
 
-public partial class EditArtist : System.Web.UI.Page
-{
-    int selectedId = 0;
-    protected void Page_Load(object sender, EventArgs e)
-    {
-        IniEditArtist();
+public partial class EditArtist : System.Web.UI.Page {
+    int selectedId = 0 ;
+    GridViewRow row;
+    protected void Page_Load(object sender, EventArgs e) {
+        if (!IsPostBack) {
+            IniEditArtist();
+            IniDDL();
+            
+        }
+
+    }
+
+    protected void IniEditArtist() {
+        gvEditArtist.DataSource = Artist.GetArtists().DefaultView;
+        gvEditArtist.DataBind();
+    }
+
+    protected void IniDDL() {
         ddlSelectYear.DataSource = Users.GetComboBoxYears();
         ddlSelectYear.DataBind();
         ddlSelectCountry.DataSource = Users.GetComboBoxCountries();
         ddlSelectCountry.DataBind();
     }
 
-    protected void IniEditArtist()
-    {
-        gvEditArtist.DataSource = Artist.GetArtists().DefaultView;
-        gvEditArtist.DataBind();
-    }
 
-
-    protected void gvEditArtist_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        if (gvEditArtist.SelectedIndex > -1)
-        {
-            try
-            {
-                GridViewRow row = gvEditArtist.SelectedRow;
+    protected void gvEditArtist_SelectedIndexChanged(object sender, EventArgs e) {
+        if (gvEditArtist.SelectedIndex > -1) {
+            try {
+                row = gvEditArtist.SelectedRow;
                 txtArtistName.Text = row.Cells[1].Text;
                 ddlSelectYear.Text = row.Cells[2].Text;
                 ddlSelectCountry.Text = row.Cells[3].Text;
-                selectedId = int.Parse(row.Cells[4].Text);
-                //selectedId = Convert.ToInt32(row.Cells[4].Text);
-                //selectedId = Artist.GetArtistKey(row.Cells[1].Text);
-                //selectedId = Convert.ToInt64(row.Cells[4].Text);
-                //selectedId = Convert.ToInt16(row.Cells[4].Text);
-                lblMessages.Text = selectedId.ToString();
                 
-           
-            }
-            catch (Exception ex)
-            {
+
+            } catch (Exception ex) {
                 lblMessages.Text = ex.Message.ToString();
             }
         }
     }
 
-    protected void gvEditArtist_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-    {
-        GridViewRow row = gvEditArtist.Rows[e.NewSelectedIndex];
+
+    protected void btnAdd_Click(object sender, EventArgs e) {
+        try {
+            if (btnAdd.Text == "Add Artist") {
+                txtArtistName.Text = "";
+                btnAdd.Text = "Save new Artist";
+                IniDDL();
+
+            } else if (btnAdd.Text == "Save new Artist") {
+                if (txtArtistName.Text != "") {
+                    string name = txtArtistName.Text;
+                    int year = int.Parse(ddlSelectYear.Text);
+                    string country = ddlSelectCountry.Text;
+                    Artist.AddArtist(name, country, year);
+                    IniEditArtist();
+                    IniDDL();
+                    btnAdd.Text = "Add Artist";
+                } else {
+                    lblMessages.Text = "Fill fields first.";
+                }
+            }
+        } catch (Exception ex) {
+
+            lblMessages.Text = ex.Message.ToString();
+        }
     }
 
-    protected void btnAdd_Click(object sender, EventArgs e)
-    {
-        if (txtArtistName.Text != "")
-        {
-            try
-            {
-                string name = txtArtistName.Text;
-                int year = int.Parse(ddlSelectYear.Text);
-                string country = ddlSelectCountry.Text;
-                Artist.AddArtist(name, country, year);
+    protected void btnDelete_Click(object sender, EventArgs e) {
+        try {
+            row = gvEditArtist.SelectedRow;
+            selectedId = int.Parse(row.Cells[4].Text);
+            if (selectedId > 0) {
+                
+
+                Artist.DeleteArtist(selectedId);
                 IniEditArtist();
+                txtArtistName.Text = "";
+                IniDDL();
+            } else {
+                lblMessages.Text = "Select Artist";
             }
-            catch (Exception ex)
-            {
-
-                lblMessages.Text = ex.Message.ToString();
-            }
-        }
-        
-    }
-
-    protected void btnDelete_Click(object sender, EventArgs e)
-    {
-        try
-        {
-            Artist.DeleteArtist(selectedId);
-            IniEditArtist();
-        }
-        catch (Exception ex)
-        {
-
-            lblMessages.Text = ex.Message.ToString();
-        }
-        
-    }
-
-    protected void btnSave_Click(object sender, EventArgs e)
-    {
-        try
-        {
-            string name = txtArtistName.Text;
-            int year = Convert.ToInt32(ddlSelectYear.Text);
-            string country = ddlSelectCountry.Text;
             
-            //Artist.UpdateArtist(Artist.GetArtistKey(name), name, country, year);
-            Artist.UpdateArtist(89, name, "Sweden", 1990);
-            IniEditArtist();
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
 
             lblMessages.Text = ex.Message.ToString();
         }
-      
+
+    }
+
+    protected void btnSave_Click(object sender, EventArgs e) {
+        try {
+            row = gvEditArtist.SelectedRow;
+            selectedId = int.Parse(row.Cells[4].Text);
+            if (selectedId > 0 ) {
+                if (txtArtistName.Text != "") {
+                    string name = txtArtistName.Text;
+                    int year = int.Parse(ddlSelectYear.Text);
+                    string country = ddlSelectCountry.Text;
+                    Artist.UpdateArtist(selectedId, name, country, year);
+                    IniEditArtist();
+                    txtArtistName.Text = "";
+                    IniDDL();
+                } else {
+                    lblMessages.Text = "Fill fields first.";
+                }
+            }
+            else {
+                lblMessages.Text = "Select Artist";
+            }          
+        } catch (Exception ex) {
+            lblMessages.Text = ex.Message.ToString();
+        }
+
     }
 }

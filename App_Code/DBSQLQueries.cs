@@ -67,12 +67,6 @@ namespace MusicDatabase {
             return artistAlbums;
         }
 
-        public static string GetArtistKey()
-        {
-            string artistKey = "select avain from esittaja where nimi = @NAME;";
-            return artistKey;
-        }
-
         #endregion
         #region ALBUM
         public static string GetAlbums() {

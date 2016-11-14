@@ -69,20 +69,6 @@ namespace MusicDatabase {
             DataTable resultTable = DBMusicDatabase.SearchTable(DBSQLQueries.SearchArtist(), srcparam, "Result");
             return resultTable;
         }
-
-        public static int GetArtistKey(string artistName)
-        {
-            try
-            {
-                int artistKey = DBMusicDatabase.GetSpecificKey(DBSQLQueries.GetArtistKey(), artistName);
-                return artistKey;
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-        }
         #endregion
     }
     public class Album {
