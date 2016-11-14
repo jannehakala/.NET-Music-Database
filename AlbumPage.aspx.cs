@@ -26,7 +26,7 @@ public partial class AlbumPage : System.Web.UI.Page {
         artistLink.Text = array[0];
         artistLink.NavigateUrl = "ArtistPage.aspx?artistName=" + array[0];
 
-        lblAlbumInfo.Text = "\u2022 " + array[1] + " \u2022 \n" + array[2] + " tracks, " + length;    
+        lblAlbumInfo.Text = "\u2022 " + array[1] + " \u2022 \n" + array[2] + " tracks, " + length;
 
         lblTrackName.Text = trackName;
 
@@ -42,5 +42,10 @@ public partial class AlbumPage : System.Web.UI.Page {
 
     protected void gvAlbumPage_RowDataBound(object sender, GridViewRowEventArgs e) {
         e.Row.Cells[1].Attributes.Add("onclick", "location='AlbumPage.aspx?trackName=" + e.Row.Cells[1].Text + "&albumName=" + albumName + "'");
+
+        if (e.Row.RowType == DataControlRowType.DataRow) {
+            e.Row.Cells[0].Attributes.Add("onmouseover", "this.style.backgroundColor='#282828';this.style.cursor='default';this.style.textDecoration='none'");
+            e.Row.Cells[2].Attributes.Add("onmouseover", "this.style.backgroundColor='#282828';this.style.cursor='default';this.style.textDecoration='none'");
+        }
     }
 }

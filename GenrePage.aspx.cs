@@ -22,5 +22,9 @@ public partial class GenrePage : System.Web.UI.Page {
         e.Row.Cells[0].Attributes.Add("onclick", "location='AlbumPage.aspx?trackName=" + e.Row.Cells[0].Text + "&albumName=" + e.Row.Cells[2].Text + "'");
         e.Row.Cells[1].Attributes.Add("onclick", "location='ArtistPage.aspx?artistName=" + e.Row.Cells[1].Text + "'");
         e.Row.Cells[2].Attributes.Add("onclick", "location='AlbumPage.aspx?albumName=" + e.Row.Cells[2].Text + "'");
+
+        if (e.Row.RowType == DataControlRowType.DataRow) {
+            e.Row.Cells[3].Attributes.Add("onmouseover", "this.style.backgroundColor='#282828';this.style.cursor='default';this.style.textDecoration='none'");
+        }
     }
 }

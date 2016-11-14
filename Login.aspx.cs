@@ -17,7 +17,7 @@ public partial class Login : System.Web.UI.Page {
     protected void btnLogin_Click(object sender, EventArgs e) {
         string username = txtUsername.Text;
         string password = txtPassword.Text;
-        string message = "";
+        string message = string.Empty;
         validator = new Validator();
         
         try {
@@ -37,20 +37,20 @@ public partial class Login : System.Web.UI.Page {
                     errorMessageContainer.Style["background-color"] = "green";
                     errorMessage.InnerText = "Login was successful!";
                     lblMessage.Text = "Logging in...";
-                    Response.AddHeader("REFRESH", "1.5;URL=Home.aspx");
+                    Response.AddHeader("REFRESH", "1;URL=Home.aspx");
                 } else {
-                    txtPassword.Text = "";
+                    txtPassword.Text = string.Empty;
                     txtPassword.Focus();
                 }
             } else {
                 errorMessage.InnerText = "Valid username: 5-20 characters.\nValid password: 8-20 characters.\nNo special characters.\nPasswords must match.";
-                txtPassword.Text = "";
+                txtPassword.Text = string.Empty;
                 txtPassword.Focus();
             }
         } catch (Exception ex) {
             message = ex.Message;
         } finally {
-            if (message != "") {
+            if (message != string.Empty) {
                 errorMessage.InnerText = message;
             }
         }

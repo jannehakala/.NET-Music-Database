@@ -17,7 +17,7 @@ public partial class Register : System.Web.UI.Page {
         string username = txtUsername.Text;
         string password = txtPassword.Text;
         string repassword = txtRePassword.Text;
-        string message = "";
+        string message = string.Empty;
         validator = new Validator();
 
         try {
@@ -28,24 +28,24 @@ public partial class Register : System.Web.UI.Page {
                     errorMessageContainer.Style["background-color"] = "green";
                     errorMessage.InnerText = "Registration was successful!";
                     lblMessage.Text = "Registering...";
-                    Response.AddHeader("REFRESH", "1.5;URL=Login.aspx");
+                    Response.AddHeader("REFRESH", "1;URL=Login.aspx");
                 } else {
-                    txtUsername.Text = "";
-                    txtPassword.Text = "";
-                    txtRePassword.Text = "";
+                    txtUsername.Text = string.Empty;
+                    txtPassword.Text = string.Empty;
+                    txtRePassword.Text = string.Empty;
                     txtUsername.Focus();
                 }
             } else {
                 errorMessage.InnerText = "Valid username: 5-20 characters.\nValid password: 8-20 characters.\nNo special characters.\nPasswords must match.";
-                txtUsername.Text = "";
-                txtPassword.Text = "";
-                txtRePassword.Text = "";
+                txtUsername.Text = string.Empty;
+                txtPassword.Text = string.Empty;
+                txtRePassword.Text = string.Empty;
                 txtUsername.Focus();
             }
         } catch (Exception ex) {
             message = ex.Message;
         } finally {
-            if (message != "") {
+            if (message != string.Empty) {
                 errorMessage.InnerText = message;
             }
         }

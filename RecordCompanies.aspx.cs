@@ -20,5 +20,10 @@ public partial class RecordCompanies : System.Web.UI.Page {
         e.Row.Cells[3].Visible = false;
 
         e.Row.Attributes.Add("onclick", "location='CompanyPage.aspx?companyName=" + e.Row.Cells[0].Text + "'");
+
+        if (e.Row.RowType == DataControlRowType.DataRow) {
+            e.Row.Cells[1].Attributes.Add("onmouseover", "this.style.backgroundColor='#282828';this.style.cursor='default';this.style.textDecoration='none'");
+            e.Row.Cells[2].Attributes.Add("onmouseover", "this.style.backgroundColor='#282828';this.style.cursor='default';this.style.textDecoration='none'");
+        }
     }
 }

@@ -21,5 +21,9 @@ public partial class CompanyPage : System.Web.UI.Page {
     protected void gvCompanyPage_RowDataBound(object sender, GridViewRowEventArgs e) {
         e.Row.Cells[0].Attributes.Add("onclick", "location='AlbumPage.aspx?albumName=" + e.Row.Cells[0].Text + "'");
         e.Row.Cells[1].Attributes.Add("onclick", "location='ArtistPage.aspx?artistName=" + e.Row.Cells[1].Text + "'");
+
+        if (e.Row.RowType == DataControlRowType.DataRow) {
+            e.Row.Cells[2].Attributes.Add("onmouseover", "this.style.backgroundColor='#282828';this.style.cursor='default';this.style.textDecoration='none'");
+        }
     }
 }
