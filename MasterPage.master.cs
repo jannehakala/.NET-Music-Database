@@ -4,12 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using MusicDatabase;
 
 public partial class MasterPage : System.Web.UI.MasterPage {
     protected void Page_Load(object sender, EventArgs e) {
 
         string username = (string)Session["username"];
         string usertype = (string)Session["usertype"];
+        string currentpage = (string)Session["currentpage"];
 
         if (usertype == null) {
             usertype = "guest";
@@ -41,4 +43,29 @@ public partial class MasterPage : System.Web.UI.MasterPage {
 
     }
 
+
+
+
+    protected void btnSearch_Click(object sender, EventArgs e) {
+
+        string srcparam = txtInput.Text;
+        
+        string cp = (string)Session["currentpage"];
+        switch (cp) {
+            case "Artist":
+                Artist.SearchArtist(srcparam);
+               
+                break;
+            case "Album":
+                Album.SearchAlbum(srcparam);
+                break;
+            default:
+               
+                break;
+        }
+
+        
+        
+
+    }
 }

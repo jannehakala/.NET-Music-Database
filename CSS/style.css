@@ -216,7 +216,7 @@ iframe{
 	margin-top: 10px; 
 }
 
-#btnSearchFromDatabase{
+.btnSearchFromDatabase{
 	padding: 5px 50px 5px;	
 	background-color: #3FA9F5;
 }
@@ -225,7 +225,7 @@ iframe{
 	background-color: #575757;
 }
 
-#inputSearch{	
+.inputSearch{	
 	padding: 5px 50px 5px;	
 	display: inline;
 	border-radius: 10px;
