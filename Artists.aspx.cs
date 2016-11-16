@@ -9,6 +9,7 @@ using MusicDatabase;
 public partial class Artists : System.Web.UI.Page {
 
     protected void Page_Load(object sender, EventArgs e) {
+        
         string usertype = (string)Session["usertype"];
 
         IniArtist();

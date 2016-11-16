@@ -18,7 +18,7 @@ namespace MusicDatabase {
         }
         public bool ValidateLogin(string username, string password) {
             if (CheckUserName(username) && CheckPassword(password)) {
-                    return true;
+                return true;
             }
             return false;
         }
@@ -33,6 +33,13 @@ namespace MusicDatabase {
         public bool CheckPassword(string password) {
             int numberOfSpecials = Regex.Matches(password, "[^a-zA-Z0-9]").Count;
             if ((password.Length >= 8 && password.Length <= 20) && numberOfSpecials == 0) {
+                return true;
+            }
+            return false;
+        }
+
+        public bool CheckPasswordsAreSame(string password, string repassword) {
+            if (password == repassword) {
                 return true;
             }
             return false;

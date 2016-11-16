@@ -16,15 +16,18 @@ public partial class MasterPage : System.Web.UI.MasterPage {
         }
 
         if (usertype == "admin") {
-            users.Attributes.Add("style", "display:default");
+            userSettings.Attributes.Add("style", "display:default");
+            userNameLink.Attributes.Add("href", "UserSettings.aspx");
         }
 
         if (usertype == "user") {
-            users.Attributes.Add("style", "display:default");
+            userSettings.Attributes.Add("style", "display:default");
+            userNameLink.Attributes.Add("href", "UserSettings.aspx");
         }
 
         if (usertype == "guest") {
-            users.Attributes.Add("style", "display:none");
+            userSettings.Attributes.Add("style", "display:none");
+            userNameLink.Attributes.Add("href", "Home.aspx");
         }
 
         if (username != null && usertype == "admin" || usertype == "user") {

@@ -10,6 +10,6 @@ public partial class Logout : System.Web.UI.Page {
         Session.Remove("username");
         Session.Remove("usertype");
         loggedOutText.InnerText = "You have been logged out. See you again :)";
-        Response.AddHeader("REFRESH", "1.5;URL=Home.aspx");
+        Response.AddHeader("REFRESH", "1.5;URL=Login.aspx");
     }
 }

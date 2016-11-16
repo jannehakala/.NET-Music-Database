@@ -29,6 +29,8 @@ public partial class Register : System.Web.UI.Page {
                     errorMessage.InnerText = "Registration was successful!";
                     lblMessage.Text = "Registering...";
                     Response.AddHeader("REFRESH", "1;URL=Login.aspx");
+                    txtPassword.Attributes["value"] = password;
+                    txtRePassword.Attributes["value"] = repassword;
                 } else {
                     txtUsername.Text = string.Empty;
                     txtPassword.Text = string.Empty;

@@ -38,6 +38,7 @@ public partial class Login : System.Web.UI.Page {
                     errorMessage.InnerText = "Login was successful!";
                     lblMessage.Text = "Logging in...";
                     Response.AddHeader("REFRESH", "1;URL=Home.aspx");
+                    txtPassword.Attributes["value"] = password;
                 } else {
                     txtPassword.Text = string.Empty;
                     txtPassword.Focus();
