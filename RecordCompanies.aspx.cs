@@ -12,8 +12,13 @@ public partial class RecordCompanies : System.Web.UI.Page {
     }
 
     protected void IniRecordCompanies() {
-        gvRecordCompanies.DataSource = Company.GetCompanies().DefaultView;
-        gvRecordCompanies.DataBind();
+        try {
+            gvRecordCompanies.DataSource = Company.GetCompanies().DefaultView;
+            gvRecordCompanies.DataBind();
+        } catch (Exception ex) {
+            lblMessages.Text = ex.Message;
+        }
+        
     }
 
     protected void gvRecordCompanies_RowDataBound(object sender, GridViewRowEventArgs e) {

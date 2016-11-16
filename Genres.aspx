@@ -4,5 +4,6 @@
     <br /><h1 id="pageHeader">Genres</h1>
     <asp:GridView ID="gvGenres" CssClass="query" OnRowDataBound="gvGenres_RowDataBound" runat="server">
     </asp:GridView>
+    <asp:Label ID="lblMessages" runat="server"></asp:Label>
 </asp:Content>
 

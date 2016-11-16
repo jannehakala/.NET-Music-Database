@@ -12,8 +12,13 @@ public partial class Albums : System.Web.UI.Page {
     }
 
     protected void IniAlbums() {
-        gvAlbums.DataSource = Album.GetAlbums().DefaultView;
-        gvAlbums.DataBind();
+        try {
+            gvAlbums.DataSource = Album.GetAlbums().DefaultView;
+            gvAlbums.DataBind();
+        } catch (Exception ex) {
+            lblMessages.Text = ex.Message;
+        }
+        
     }
 
     protected void gvAlbums_RowDataBound(object sender, GridViewRowEventArgs e) {

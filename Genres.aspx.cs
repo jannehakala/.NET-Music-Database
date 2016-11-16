@@ -12,9 +12,12 @@ public partial class Genres : System.Web.UI.Page {
     }
 
     protected void IniGenres() {
-        gvGenres.DataSource = Genre.GetGenres().DefaultView;
-        gvGenres.DataBind();
-
+        try {
+            gvGenres.DataSource = Genre.GetGenres().DefaultView;
+            gvGenres.DataBind();
+        } catch (Exception ex) {
+            lblMessages.Text = ex.Message;
+        }
     }
 
     protected void gvGenres_RowDataBound(object sender, GridViewRowEventArgs e) {

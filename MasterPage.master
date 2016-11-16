@@ -27,7 +27,7 @@
                     <form method='post' action=''>
 
                         <input id="inputSearch" type="text" autocomplete="off" placeholder="Search" name="search" runat="server" />
-                        <input class="buttons" id="btnSearchFromDatabase" type="submit" name="btnSearchDatabase" value="Search from database" />
+                        <input class="buttons btnSearchFromDatabase" type="submit" name="btnSearchDatabase" value="Search from database" />
                     </form>
                 </div>
             </nav>

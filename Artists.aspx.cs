@@ -9,7 +9,7 @@ using MusicDatabase;
 public partial class Artists : System.Web.UI.Page {
 
     protected void Page_Load(object sender, EventArgs e) {
-        
+
         string usertype = (string)Session["usertype"];
 
         IniArtist();
@@ -22,8 +22,12 @@ public partial class Artists : System.Web.UI.Page {
     }
 
     protected void IniArtist() {
-        gvArtist.DataSource = Artist.GetArtists().DefaultView;
-        gvArtist.DataBind();
+        try {
+            gvArtist.DataSource = Artist.GetArtists().DefaultView;
+            gvArtist.DataBind();
+        } catch (Exception ex) {
+            lblMessages.Text = ex.Message;
+        }
     }
 
     protected void gvArtist_RowDataBound(object sender, GridViewRowEventArgs e) {

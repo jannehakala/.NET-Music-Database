@@ -5,7 +5,6 @@
     <asp:GridView ID="gvAlbums" CssClass="query" runat="server" OnRowDataBound="gvAlbums_RowDataBound">
 
     </asp:GridView>
-
-
+    <asp:Label ID="lblMessages" runat="server"></asp:Label>
 </asp:Content>
 

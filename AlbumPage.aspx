@@ -10,5 +10,6 @@
         <asp:Label ID="lblTrackName" runat="server" Font-Size="16"></asp:Label><br />
         <iframe id="youtubeVideo" allowfullscreen="allowfullscreen" width="700" height="400" src="" runat="server"></iframe>
     </div>
+    <asp:Label ID="lblMessages" runat="server"></asp:Label>
 </asp:Content>
 

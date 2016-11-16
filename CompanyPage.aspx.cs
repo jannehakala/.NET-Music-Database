@@ -12,10 +12,15 @@ public partial class CompanyPage : System.Web.UI.Page {
     }
 
     protected void IniCompanyPage() {
-        string companyName = Request.QueryString["companyName"];
-        lblCompanyName.Text = companyName;
-        gvCompanyPage.DataSource = Company.GetCompanyAlbums(companyName);
-        gvCompanyPage.DataBind();
+        try {
+            string companyName = Request.QueryString["companyName"];
+            lblCompanyName.Text = companyName;
+            gvCompanyPage.DataSource = Company.GetCompanyAlbums(companyName);
+            gvCompanyPage.DataBind();
+        } catch (Exception ex) {
+            lblMessages.Text = ex.Message;
+        }
+        
     }
 
     protected void gvCompanyPage_RowDataBound(object sender, GridViewRowEventArgs e) {

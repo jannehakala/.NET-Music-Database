@@ -8,6 +8,7 @@
 
     <asp:GridView ID="gvArtist" CssClass="query" OnRowDataBound="gvArtist_RowDataBound" runat="server">
     </asp:GridView>
+    <asp:Label ID="lblMessages" runat="server"></asp:Label>
 
 </asp:Content>
 

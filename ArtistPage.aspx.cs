@@ -12,10 +12,15 @@ public partial class ArtistPage : System.Web.UI.Page {
     }
 
     protected void IniArtistAlbums() {
-        string artistName = Request.QueryString["artistName"];
-        lblArtistName.Text = artistName;
-        gvArtistPage.DataSource = Artist.GetArtistAlbums(artistName);
-        gvArtistPage.DataBind();
+        try {
+            string artistName = Request.QueryString["artistName"];
+            lblArtistName.Text = artistName;
+            gvArtistPage.DataSource = Artist.GetArtistAlbums(artistName);
+            gvArtistPage.DataBind();
+        } catch (Exception ex) {
+            lblMessages.Text = ex.Message;
+        }
+        
     }
 
     protected void gvArtistPage_RowDataBound(object sender, GridViewRowEventArgs e) {

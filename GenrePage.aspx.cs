@@ -12,10 +12,16 @@ public partial class GenrePage : System.Web.UI.Page {
     }
 
     protected void IniGenrePage() {
-        string genreName = Request.QueryString["genreName"];
-        lblGenreName.Text = genreName;
-        gvGenrePage.DataSource = Genre.GetGenreTracks(genreName);
-        gvGenrePage.DataBind();
+
+        try {
+            string genreName = Request.QueryString["genreName"];
+            lblGenreName.Text = genreName;
+            gvGenrePage.DataSource = Genre.GetGenreTracks(genreName);
+            gvGenrePage.DataBind();
+        } catch (Exception ex) {
+            lblMessages.Text = ex.Message;
+        }
+        
     }
 
     protected void gvGenrePage_RowDataBound(object sender, GridViewRowEventArgs e) {
