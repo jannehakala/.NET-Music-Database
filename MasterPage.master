@@ -24,11 +24,8 @@
                 </div>
                 <div id="searchBar">
 
-                    <form method='post' action=''>
-
-                        <input id="inputSearch" type="text" autocomplete="off" placeholder="Search" name="search" runat="server" />
-                        <input class="buttons btnSearchFromDatabase" type="submit" name="btnSearchDatabase" value="Search from database" />
-                    </form>
+                        <asp:TextBox ID="txtInput" CssClass="inputSearch" runat="server"></asp:TextBox>
+                        <asp:Button ID="btnSearch" CssClass="buttons btnSearchFromDatabase" OnClick="btnSearch_Click" Text="Search from database" runat="server" />
                 </div>
             </nav>
             <div id="container">

@@ -39,4 +39,7 @@ public partial class Artists : System.Web.UI.Page {
             e.Row.Cells[2].Attributes.Add("onmouseover", "this.style.backgroundColor='#282828';this.style.cursor='default';this.style.textDecoration='none'");
         }
     }
+
+
+
 }
