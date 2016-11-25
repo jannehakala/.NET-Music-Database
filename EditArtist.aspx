@@ -11,10 +11,15 @@
             <asp:ButtonField CommandName="Select" HeaderText="Edit" Text="Select" />
         </Columns>
     </asp:GridView>
-
+    <asp:RegularExpressionValidator ID="regexpName" runat="server"     
+                                    ErrorMessage="No special characters." 
+                                    ControlToValidate="txtArtistName"     
+                                    ValidationExpression="^[\w{.,'}+:?®©-]+$" />
     <div id="editFields">
         <span>Name:</span><br />
-        <asp:TextBox ID="txtArtistName" runat="server"></asp:TextBox>
+        <asp:Panel runat="server" DefaultButton="btnAdd">
+            <asp:TextBox ID="txtArtistName" runat="server"></asp:TextBox>
+        </asp:Panel>
         <br />
         <br />
         <span>Select year:</span><br />

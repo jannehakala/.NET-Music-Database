@@ -12,10 +12,13 @@
     <ajaxToolkit:ModalPopupExtender ID="mpeAddToPlaylist" runat="server" TargetControlID="lblMessages" PopupControlID="divPopUp"></ajaxToolkit:ModalPopupExtender>
     <div id="divPopUp">
         <div id="divPopUpInside">
-            <h2>Add track to playlist</h2>
+
+            <h2 id="trackNamePopUp" runat="server"></h2>
             Add track to a new playlist:
-            <asp:TextBox ID="txtFileName" runat="server"></asp:TextBox><br />
-            <br />
+            <asp:Panel runat="server" DefaultButton="btnCreate">
+                <asp:TextBox ID="txtFileName" runat="server"></asp:TextBox><br /><br />
+            </asp:Panel>
+            
             <div id="btnDivCreate" class="buttonOK">
                 <asp:Button ID="btnCreate" runat="server" OnClick="btnCreate_Click" CssClass="buttons btnCreate" Text="Create and add" />
             </div>
@@ -26,7 +29,8 @@
             <div id="btnAddDiv">
                 <asp:Button ID="btnAdd" OnClick="btnAdd_Click" runat="server" CssClass="buttons btnAdd" Text="Add" />
                 <asp:Button ID="btnCancelAdd" runat="server" OnClick="btnCancelAdd_Click" CssClass="buttons btnCancelAdd" Text="Cancel" />
-            </div><br />
+            </div>
+            <br />
             <asp:Label ID="lblMessagePopUp" ForeColor="Red" runat="server"></asp:Label>
         </div>
     </div>

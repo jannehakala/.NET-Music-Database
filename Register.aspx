@@ -17,17 +17,19 @@
             <h1>Music Database</h1>
             <h2>Register</h2>
             Username:<br />
-            <asp:TextBox ID="txtUsername" runat="server"></asp:TextBox><br />
-            Password:<br />
-            <asp:TextBox ID="txtPassword" TextMode="Password" runat="server"></asp:TextBox><br />
-            Re-enter password:<br />
-            <asp:TextBox ID="txtRePassword" TextMode="Password" runat="server"></asp:TextBox><br />
+            <asp:Panel runat="server" DefaultButton="btnRegisterLoginForm">
+                <asp:TextBox ID="txtUsername" runat="server"></asp:TextBox><br />
+                Password:<br />
+                <asp:TextBox ID="txtPassword" TextMode="Password" runat="server"></asp:TextBox><br />
+                Re-enter password:<br />
+                <asp:TextBox ID="txtRePassword" TextMode="Password" runat="server"></asp:TextBox><br />
+            </asp:Panel>
             <br />
             <asp:Button ID='btnRegisterLoginForm' CssClass='buttons' Text="Register" OnClick="btnRegisterLoginForm_Click" runat="server" /><br />
-            <asp:Button ID='btnBackToLogin' CssClass='buttons' PostBackUrl="Login.aspx" Text="Back to Login" runat="server"/><br />
-            <asp:Button ID='btnBackToMain' CssClass='buttons' PostBackUrl="Home.aspx" Text="Back to Music database" runat="server"/><br />
+            <asp:Button ID='btnBackToLogin' CssClass='buttons' PostBackUrl="Login.aspx" Text="Back to Login" runat="server" /><br />
+            <asp:Button ID='btnBackToMain' CssClass='buttons' PostBackUrl="Home.aspx" Text="Back to Music database" runat="server" /><br />
             <asp:Label ID="lblMessage" Font-Size="20px" ForeColor="LightGreen" runat="server"></asp:Label>
-        </div>    
+        </div>
     </form>
 </body>
 </html>

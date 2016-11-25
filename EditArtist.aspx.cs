@@ -58,7 +58,7 @@ public partial class EditArtist : System.Web.UI.Page {
             if (btnAdd.Text == "Add artist") {
                 txtArtistName.Text = string.Empty;
                 btnAdd.Text = "Save new Artist";
-                lblMessages.Text = "Add new artist.";
+                lblMessages.Text = "Add a new artist.";
                 btnSave.Enabled = false;
                 btnDelete.Enabled = false;
                 IniDDL();

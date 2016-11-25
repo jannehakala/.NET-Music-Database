@@ -18,6 +18,7 @@ public partial class Tracks : System.Web.UI.Page {
     private GridViewRow row;
 
     protected void Page_Load(object sender, EventArgs e) {
+        mpeAddToPlaylist.Hide();
         IniTracks();
         ddlPlaylistNames.Items.Insert(0, new ListItem(String.Empty, String.Empty));
     }
@@ -30,7 +31,7 @@ public partial class Tracks : System.Web.UI.Page {
         } catch (Exception ex) {
             lblMessages.Text = ex.Message;
         }
-       
+
     }
 
     protected void gvTracks_SelectedIndexChanged(object sender, EventArgs e) {
@@ -49,7 +50,11 @@ public partial class Tracks : System.Web.UI.Page {
             txtFileName.Text = string.Empty;
             lblMessages.Text = string.Empty;
             lblMessagePopUp.Text = string.Empty;
+            row = gvTracks.SelectedRow;
+            track = row.Cells[1].Text;
+            trackNamePopUp.InnerText = track;
             mpeAddToPlaylist.Show();
+            txtFileName.Focus();
         }
 
     }
@@ -63,27 +68,27 @@ public partial class Tracks : System.Web.UI.Page {
         album = row.Cells[3].Text;
         year = row.Cells[4].Text;
 
-        string path = Server.MapPath("~/App_Data/" + newFile + ".xml");
+  
         try {
 
-            if (newFile != string.Empty) {
-                if (!File.Exists(path)) {
-                    XDocument doc = new XDocument(new XElement("playlist",
-                                                 new XElement("track",
-                                                     new XElement("Track", track),
-                                                     new XElement("Artist", artist),
-                                                     new XElement("Album", album),
-                                                     new XElement("Year", year))));
+            if (newFile == string.Empty) {
+                newFile = "Playlist " + DateTime.Now.ToString("HH:mm:ss");
+            }
+            string path = Server.MapPath("~/App_Data/" + newFile + ".xml");
+            if (!File.Exists(path)) {
+                XDocument doc = new XDocument(new XElement("playlist",
+                                             new XElement("track",
+                                                 new XElement("Track", track),
+                                                 new XElement("Artist", artist),
+                                                 new XElement("Album", album),
+                                                 new XElement("Year", year))));
 
-                    doc.Save(path);
-                    lblMessages.Text = "Created playlist " + newFile + " and track " + track + " added to list.";
-                } else {
-                    mpeAddToPlaylist.Show();
-                    lblMessagePopUp.Text = newFile + " alredy exists.";
-                }
+                doc.Save(path);
+                mpeAddToPlaylist.Hide();
+                lblMessages.Text = "Created a playlist: " + newFile + " and track: " + track + " added to the list.";
             } else {
                 mpeAddToPlaylist.Show();
-                lblMessagePopUp.Text = "Give your playlist a name.";
+                lblMessagePopUp.Text = newFile + " alredy exists.";
             }
         } catch (Exception ex) {
             lblMessagePopUp.Text = ex.Message;
@@ -111,7 +116,8 @@ public partial class Tracks : System.Web.UI.Page {
                                                  new XElement("Album", album),
                                                  new XElement("Year", year)));
                 xDoc.Save(path);
-                lblMessages.Text = "Track " + track + " added to playlist " + selected;
+                mpeAddToPlaylist.Hide();
+                lblMessages.Text = "Track " + track + " added to the playlist: " + selected + ".";
             } else {
                 mpeAddToPlaylist.Show();
                 lblMessagePopUp.Text = "File is missing.";

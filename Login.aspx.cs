@@ -8,10 +8,10 @@ using MusicDatabase;
 using System.Drawing;
 
 public partial class Login : System.Web.UI.Page {
+
     Validator validator;
     protected void Page_Load(object sender, EventArgs e) {
         txtUsername.Focus();
-        txtPassword.Attributes.Add("onkeypress", "button_click(this,'" + this.btnRegisterLoginForm.ClientID + "')");
     }
 
     protected void btnLogin_Click(object sender, EventArgs e) {
