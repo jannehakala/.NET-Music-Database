@@ -14,7 +14,7 @@
     <asp:RegularExpressionValidator ID="regexpName" runat="server"     
                                     ErrorMessage="No special characters." 
                                     ControlToValidate="txtArtistName"     
-                                    ValidationExpression="^[\w{.,'}+:?®©-]+$" />
+                                    ValidationExpression="^[\w{.,'}+ :?®©-]+$" />
     <div id="editFields">
         <span>Name:</span><br />
         <asp:Panel runat="server" DefaultButton="btnAdd">
