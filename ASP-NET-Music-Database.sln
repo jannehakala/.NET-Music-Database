@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ASP-NET-Music-Database", ".", "{DE68B787-3557-43C6-BA8C-7C017482648D}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ASP-NET-Music-Database", ".", "{2EA49346-2B83-4753-B589-0CDE38F2960C}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_22412"
@@ -29,8 +29,8 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DE68B787-3557-43C6-BA8C-7C017482648D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE68B787-3557-43C6-BA8C-7C017482648D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EA49346-2B83-4753-B589-0CDE38F2960C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EA49346-2B83-4753-B589-0CDE38F2960C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

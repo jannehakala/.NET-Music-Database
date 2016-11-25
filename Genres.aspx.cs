@@ -8,6 +8,7 @@ using MusicDatabase;
 
 public partial class Genres : System.Web.UI.Page {
     protected void Page_Load(object sender, EventArgs e) {
+        Session["currentpage"] = "Genres";
         IniGenres();
     }
 

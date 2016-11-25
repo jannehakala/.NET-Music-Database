@@ -18,6 +18,7 @@ public partial class Tracks : System.Web.UI.Page {
     private GridViewRow row;
 
     protected void Page_Load(object sender, EventArgs e) {
+        Session["currentpage"] = "Tracks";
         mpeAddToPlaylist.Hide();
         IniTracks();
         ddlPlaylistNames.Items.Insert(0, new ListItem(String.Empty, String.Empty));
