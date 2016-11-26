@@ -19,6 +19,14 @@
                                     ErrorMessage="No special characters." 
                                     ControlToValidate="txtTubeLink"     
                                     ValidationExpression="^[\w{.,'}+ :?®©-]+$" />
+    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"     
+                                    ErrorMessage="No special characters." 
+                                    ControlToValidate="txtNumber"     
+                                    ValidationExpression="^[0-9]*$" />
+    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server"     
+                                    ErrorMessage="No special characters." 
+                                    ControlToValidate="txtLength"     
+                                    ValidationExpression="^[0-9+:]*$" />
     <div id="editFields">
         <span>Name:</span><br />
         <asp:Panel runat="server" DefaultButton="btnAdd">
@@ -34,14 +42,26 @@
         <asp:DropDownList ID="ddlSelectYear" CssClass="comboYear" runat="server"></asp:DropDownList>
         <br />
         <br /> 
-        <span>Select company:</span><br />
-        <asp:DropDownList ID="ddlSelectCompany" CssClass="comboCompany" runat="server"></asp:DropDownList>
+        <span>Select album:</span><br />
+        <asp:DropDownList ID="ddlSelectAlbum" CssClass="comboCompany" runat="server"></asp:DropDownList>
         <br />
         <br />
-        <span>Image link:</span><br />
+        <span>Select genre:</span><br />
+        <asp:DropDownList ID="ddlSelectGenre" CssClass="comboCompany" runat="server"></asp:DropDownList>
+        <br />
+        <br />
+        <span>Youtube link:</span><br />
         <asp:Panel runat="server" DefaultButton="btnAdd">
             <asp:TextBox ID="txtTubeLink" runat="server"></asp:TextBox>
+        </asp:Panel>
+        <span>Number:</span><br />
+        <asp:Panel runat="server" DefaultButton="btnAdd">
+            <asp:TextBox ID="txtNumber" runat="server"></asp:TextBox>
         </asp:Panel>   
+        <span>Length:</span><br />
+        <asp:Panel runat="server" DefaultButton="btnAdd">
+            <asp:TextBox ID="txtLength" runat="server"></asp:TextBox>
+        </asp:Panel>      
         <asp:Button ID="btnAdd" Text="Add track" CssClass="buttons addButton" OnClick="btnAdd_Click" runat="server" />
         <br />
         <asp:Button ID="btnSave" Text="Save changes" CssClass="buttons updateButton" OnClick="btnSave_Click" runat="server" />

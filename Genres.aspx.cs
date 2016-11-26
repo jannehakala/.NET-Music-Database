@@ -10,6 +10,12 @@ public partial class Genres : System.Web.UI.Page {
     protected void Page_Load(object sender, EventArgs e) {
         Session["currentpage"] = "Genres";
         IniGenres();
+        string usertype = (string)Session["usertype"];
+        if (usertype == "user" || usertype == "admin") {
+            btnEdit.Attributes.Add("style", "display:default");
+        } else {
+            btnEdit.Attributes.Add("style", "display:none");
+        }
     }
 
     protected void IniGenres() {

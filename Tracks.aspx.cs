@@ -22,6 +22,12 @@ public partial class Tracks : System.Web.UI.Page {
         mpeAddToPlaylist.Hide();
         IniTracks();
         ddlPlaylistNames.Items.Insert(0, new ListItem(String.Empty, String.Empty));
+        string usertype = (string)Session["usertype"];
+        if (usertype == "user" || usertype == "admin") {
+            btnEdit.Attributes.Add("style", "display:default");
+        } else {
+            btnEdit.Attributes.Add("style", "display:none");
+        }
     }
 
     protected void IniTracks() {
