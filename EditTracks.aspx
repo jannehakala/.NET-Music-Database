@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="EditAlbums.aspx.cs" Inherits="EditAlbums" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="EditTracks.aspx.cs" Inherits="EditTracks" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="body" Runat="Server">
     <br />
@@ -6,23 +6,23 @@
 
     <h1 id="pageHeader">Edit or Add new</h1>
 
-    <asp:GridView ID="gvEditAlbums" OnSelectedIndexChanged="gvEditAlbums_SelectedIndexChanged" CssClass="query" OnRowDataBound="gvEditAlbums_RowDataBound" runat="server">
+    <asp:GridView ID="gvEditTracks" OnSelectedIndexChanged="gvEditTracks_SelectedIndexChanged" CssClass="query" OnRowDataBound="gvEditTracks_RowDataBound" runat="server">
         <Columns>
             <asp:ButtonField CommandName="Select" HeaderText="Edit" Text="Select" />
         </Columns>
     </asp:GridView>
     <asp:RegularExpressionValidator ID="regexpName" runat="server"     
                                     ErrorMessage="No special characters." 
-                                    ControlToValidate="txtAlbumName"    
+                                    ControlToValidate="txtTrackName"     
                                     ValidationExpression="^[\w{.,'}+ :?®©-]+$" />
     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"     
                                     ErrorMessage="No special characters." 
-                                    ControlToValidate="txtImageLink"    
+                                    ControlToValidate="txtTubeLink"     
                                     ValidationExpression="^[\w{.,'}+ :?®©-]+$" />
     <div id="editFields">
         <span>Name:</span><br />
         <asp:Panel runat="server" DefaultButton="btnAdd">
-            <asp:TextBox ID="txtAlbumName" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtTrackName" runat="server"></asp:TextBox>
         </asp:Panel>
         <br />
         <br />
@@ -40,15 +40,15 @@
         <br />
         <span>Image link:</span><br />
         <asp:Panel runat="server" DefaultButton="btnAdd">
-            <asp:TextBox ID="txtImageLink" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtTubeLink" runat="server"></asp:TextBox>
         </asp:Panel>   
-        <asp:Button ID="btnAdd" Text="Add album" CssClass="buttons addButton" OnClick="btnAdd_Click" runat="server" />
+        <asp:Button ID="btnAdd" Text="Add track" CssClass="buttons addButton" OnClick="btnAdd_Click" runat="server" />
         <br />
         <asp:Button ID="btnSave" Text="Save changes" CssClass="buttons updateButton" OnClick="btnSave_Click" runat="server" />
         <br />
-        <asp:Button ID="btnDelete" Text="Delete album" CssClass="buttons deleteButton" OnClick="btnDelete_Click" OnClientClick="return confirm('Are you sure you want to delete this album ?')" runat="server" /><br />
+        <asp:Button ID="btnDelete" Text="Delete track" CssClass="buttons deleteButton" OnClick="btnDelete_Click" OnClientClick="return confirm('Are you sure you want to delete this album ?')" runat="server" /><br />
         <br />
-        <asp:Label ID="lblMessages" Text="Select album to edit." runat="server" Font-Size="15"></asp:Label>
+        <asp:Label ID="lblMessages" Text="Select track to edit." runat="server" Font-Size="15"></asp:Label>
     </div>
 </asp:Content>
 
