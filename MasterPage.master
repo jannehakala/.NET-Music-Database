@@ -30,7 +30,8 @@
                         <asp:TextBox ID="txtInput" CssClass="inputSearch" runat="server"></asp:TextBox>
                         <asp:Button ID="btnSearch" CssClass="buttons btnSearchFromDatabase" OnClick="btnSearch_Click" Text="Search from database" runat="server" />
                         <asp:RegularExpressionValidator ID="regexpName" runat="server"     
-                                    ErrorMessage="No special characters." 
+                                    ErrorMessage="No special characters."
+                                    ForeColor="Black" 
                                     ControlToValidate="txtInput"     
                                     ValidationExpression="^[\w{.,'}+ :?®©-]+$" />                    
                     </asp:Panel>

@@ -9,6 +9,16 @@ using MusicDatabase;
 public partial class EditTracks : System.Web.UI.Page {
     int selectedId = 0;
     GridViewRow row;
+
+    public override void ProcessRequest(HttpContext context) {
+        try {
+            base.ProcessRequest(context);
+        } catch (HttpRequestValidationException ex) {
+            context.Response.Redirect("HandleValidationError.aspx");
+        }
+
+    }
+
     protected void Page_Load(object sender, EventArgs e) {
         if (!IsPostBack) {
             IniEditTracks();
@@ -40,7 +50,7 @@ public partial class EditTracks : System.Web.UI.Page {
         txtLength.Text = string.Empty;
         txtTubeLink.Text = string.Empty;
         ddlSelectAlbum.SelectedIndex = 0;
-        ddlSelectYear.SelectedIndex = 0;
+        ddlSelectYear.SelectedIndex = -1;
         ddlSelectArtist.SelectedIndex = 0;
         ddlSelectGenre.SelectedIndex = 0;
     }
@@ -58,14 +68,14 @@ public partial class EditTracks : System.Web.UI.Page {
                 ddlSelectArtist.Text = row.Cells[2].Text;
                 ddlSelectAlbum.Text = row.Cells[3].Text;
                 ddlSelectYear.Text = row.Cells[4].Text;
-                txtTubeLink.Text = row.Cells[5].Text;
+                txtTubeLink.Text = "https://www.youtube.com/watch?v=" + row.Cells[5].Text;
                 txtNumber.Text = row.Cells[6].Text;
                 txtLength.Text = row.Cells[7].Text;
                 ddlSelectGenre.Text = row.Cells[8].Text;
                 
                 
                 
-                btnAdd.Text = "Add track";
+                btnAdd.Text = "Add a track";
                 lblMessages.Text = "Track " + row.Cells[1].Text + " selected.";
                 btnSave.Enabled = true;
                 btnDelete.Enabled = true;
@@ -76,11 +86,9 @@ public partial class EditTracks : System.Web.UI.Page {
     }
 
     protected void gvEditTracks_RowDataBound(object sender, GridViewRowEventArgs e) {
-        e.Row.Cells[5].Visible = false;
-        e.Row.Cells[6].Visible = false;
-        e.Row.Cells[7].Visible = false;
-        e.Row.Cells[8].Visible = false;
-        e.Row.Cells[9].Visible = false;
+        for (int i = 5; i < 10; i++) {
+            e.Row.Cells[i].Visible = false;
+        }
 
         if (e.Row.RowType == DataControlRowType.DataRow) {
             for (int i = 1; i < 5; i++) {
@@ -91,26 +99,31 @@ public partial class EditTracks : System.Web.UI.Page {
 
     protected void btnAdd_Click(object sender, EventArgs e) {
         try {
-            if (btnAdd.Text == "Add track") {
+            if (btnAdd.Text == "Add a track") {
                 txtTrackName.Text = string.Empty;
-                btnAdd.Text = "Save new Track";
+                btnAdd.Text = "Save new track";
                 lblMessages.Text = "Add a new track.";
+                txtTrackName.Focus();
                 btnSave.Enabled = false;
                 btnDelete.Enabled = false;
                 IniDDL();
-            } else if (btnAdd.Text == "Save new Track") {
-                if (txtTrackName.Text != string.Empty) {
+            } else if (btnAdd.Text == "Save new track") {
+                if (txtTrackName.Text != string.Empty && ddlSelectYear.SelectedIndex > 0 &&
+                    ddlSelectArtist.SelectedIndex > 0 && ddlSelectAlbum.SelectedIndex > 0 &&
+                    ddlSelectGenre.SelectedIndex > 0 && txtTubeLink.Text != string.Empty &&
+                    txtNumber.Text != string.Empty && txtLength.Text != string.Empty) {
                     string name = txtTrackName.Text;
                     int year = int.Parse(ddlSelectYear.Text);
                     string artist = ddlSelectArtist.Text;
                     string genre = ddlSelectGenre.Text;
                     string album = ddlSelectAlbum.Text;
                     string link = txtTubeLink.Text;
+                    string linkParsed = link.Substring(link.LastIndexOf('=') + 1);
                     int number = int.Parse(txtNumber.Text);
                     string length = txtLength.Text;
-                    Track.AddTrack(name, artist, year, album, genre, link, number, length);
+                    Track.AddTrack(name, artist, year, album, genre, linkParsed, number, length);
                     lblMessages.Text = "Track " + name + " added to database.";
-                    btnAdd.Text = "Add track";
+                    btnAdd.Text = "Add a track";
                     IniEditTracks();
                     IniDDL();
                     btnSave.Enabled = true;
@@ -130,16 +143,20 @@ public partial class EditTracks : System.Web.UI.Page {
             row = gvEditTracks.SelectedRow;
             selectedId = int.Parse(row.Cells[9].Text);
             if (gvEditTracks.SelectedIndex > -1) {
-                if (txtTrackName.Text != string.Empty) {
+                if (txtTrackName.Text != string.Empty && ddlSelectYear.SelectedIndex > 0 && 
+                    ddlSelectArtist.SelectedIndex > 0 && ddlSelectAlbum.SelectedIndex > 0 && 
+                    ddlSelectGenre.SelectedIndex > 0 && txtTubeLink.Text != string.Empty &&
+                    txtNumber.Text != string.Empty && txtLength.Text != string.Empty) {
                     string name = txtTrackName.Text;
                     int year = int.Parse(ddlSelectYear.Text);
                     string artist = ddlSelectArtist.Text;
                     string genre = ddlSelectGenre.Text;
                     string album = ddlSelectAlbum.Text;
                     string link = txtTubeLink.Text;
+                    string linkParsed = link.Substring(link.LastIndexOf('=') + 1);
                     int number = int.Parse(txtNumber.Text);
                     string length = txtLength.Text;
-                    Track.UpdateTrack(selectedId, name, artist, year, album, link, number, length, genre);
+                    Track.UpdateTrack(selectedId, name, artist, year, album, linkParsed, number, length, genre);
                     lblMessages.Text = "Track " + name + " updated to database.";
                     IniEditTracks();
                     IniDDL();
@@ -164,7 +181,7 @@ public partial class EditTracks : System.Web.UI.Page {
                 IniEditTracks();
                 IniDDL();
             } else {
-                lblMessages.Text = "Select track first.";
+                lblMessages.Text = "Select a track first.";
             }
         } catch (Exception ex) {
             lblMessages.Text = ex.Message.ToString();

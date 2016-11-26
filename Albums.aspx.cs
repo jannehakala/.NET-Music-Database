@@ -25,7 +25,6 @@ public partial class Albums : System.Web.UI.Page {
         } catch (Exception ex) {
             lblMessages.Text = ex.Message;
         }
-        
     }
 
     protected void gvAlbums_RowDataBound(object sender, GridViewRowEventArgs e) {

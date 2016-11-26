@@ -161,6 +161,18 @@ namespace MusicDatabase {
                                 "where cd_kappale.cd_avain = (select avain from cd where nimi = @ALBUM);";
             return albumInfo;
         }
+
+        public static string HasTracks() {
+            string albumInfo = "select " +
+                                        "count(kappale.nimi) " +  
+                                "from cd " +
+                                "left join cd_kappale on cd_kappale.cd_avain = cd.avain " +
+                                "left join kappale on cd_kappale.kappale_avain = kappale.avain " +
+                                "left join esittaja on kappale.esittaja_avain = esittaja.avain " +
+                                "left join vuosi on kappale.vuosi_avain = vuosi.avain " +
+                                "where cd_kappale.cd_avain = (select avain from cd where nimi = @ALBUM);";
+            return albumInfo;
+        }
         public static string GetAlbumName() {
             string albumName = "select " +
                                         "cd.nimi " +

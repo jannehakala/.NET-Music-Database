@@ -18,26 +18,32 @@ public partial class AlbumPage : System.Web.UI.Page {
 
         lblAlbumName.Text = albumName;
         try {
-            List<string> array = Album.GetAlbumInfo(albumName);
+            bool HasTracks = Album.HasTracks(albumName);
 
-            string length = array[3].ToString();
-            length = length.Substring(1);
+            if (HasTracks) {
+                List<string> array = Album.GetAlbumInfo(albumName);
+                string length = array[3].ToString();
+                length = length.Substring(1);
 
-            artistLink.Text = array[0];
-            artistLink.NavigateUrl = "ArtistPage.aspx?artistName=" + array[0];
+                from.InnerText = "from artist ";
+                artistLink.Text = array[0];
+                artistLink.NavigateUrl = "ArtistPage.aspx?artistName=" + array[0];
 
-            lblAlbumInfo.Text = "\u2022 " + array[1] + " \u2022 \n" + array[2] + " tracks, " + length;
+                lblAlbumInfo.Text = " \u2022 " + array[1] + " \u2022 \n" + array[2] + " tracks, " + length;
 
-            lblTrackName.Text = trackName;
-
-            gvAlbumPage.DataSource = Album.GetAlbumTracks(albumName);
-            gvAlbumPage.DataBind();
+                lblTrackName.Text = trackName;
+            } else {
+                lblMessages.Text = "This album has no tracks.";
+            }
 
             albumImage.ImageUrl = Album.GetImageUrl(albumName);
 
             youtubeCode = Track.GetTrackTubepath(trackName);
 
             youtubeVideo.Attributes["src"] = "https://www.youtube.com/embed/" + youtubeCode + "?rel=0&autoplay=1";
+
+            gvAlbumPage.DataSource = Album.GetAlbumTracks(albumName);
+            gvAlbumPage.DataBind();
         } catch (Exception ex) {
             lblMessages.Text = ex.Message;
         }

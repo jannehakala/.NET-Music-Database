@@ -122,6 +122,16 @@ namespace MusicDatabase {
                 throw ex;
             }
         }
+
+        public static bool HasTracks(string album) {
+            try {
+                bool HasTracks = DBMusicDatabase.HasTracks(DBSQLQueries.HasTracks(), album);
+                return HasTracks;
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
         public static bool DeleteAlbum(int key) {
             try {
                 int deleted = DBMusicDatabase.DeleteRow(DBSQLQueries.DeleteAlbum(), key);

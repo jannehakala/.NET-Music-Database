@@ -43,7 +43,7 @@ public partial class EditArtist : System.Web.UI.Page {
                 txtArtistName.Text = row.Cells[1].Text;
                 ddlSelectYear.Text = row.Cells[2].Text;
                 ddlSelectCountry.Text = row.Cells[3].Text;
-                btnAdd.Text = "Add artist";
+                btnAdd.Text = "Add an artist";
                 lblMessages.Text = "Artist " + row.Cells[1].Text + " selected.";
                 btnSave.Enabled = true;
                 btnDelete.Enabled = true;
@@ -55,21 +55,22 @@ public partial class EditArtist : System.Web.UI.Page {
 
     protected void btnAdd_Click(object sender, EventArgs e) {
         try {
-            if (btnAdd.Text == "Add artist") {
+            if (btnAdd.Text == "Add an artist") {
                 txtArtistName.Text = string.Empty;
-                btnAdd.Text = "Save new Artist";
+                btnAdd.Text = "Save new artist";
+                txtArtistName.Focus();
                 lblMessages.Text = "Add a new artist.";
                 btnSave.Enabled = false;
                 btnDelete.Enabled = false;
                 IniDDL();
-            } else if (btnAdd.Text == "Save new Artist") {
-                if (txtArtistName.Text != string.Empty) {
+            } else if (btnAdd.Text == "Save new artist") {
+                if (txtArtistName.Text != string.Empty && ddlSelectCountry.SelectedIndex > 0 && ddlSelectYear.SelectedIndex > 0) {
                     string name = txtArtistName.Text;
                     int year = int.Parse(ddlSelectYear.Text);
                     string country = ddlSelectCountry.Text;
                     Artist.AddArtist(name, country, year);
                     lblMessages.Text = "Artist " + name + " added to database.";
-                    btnAdd.Text = "Add artist";
+                    btnAdd.Text = "Add an artist";
                     IniEditArtist();
                     IniDDL();
                     btnSave.Enabled = true;
@@ -80,6 +81,31 @@ public partial class EditArtist : System.Web.UI.Page {
             }
         } catch (Exception ex) {
 
+            lblMessages.Text = ex.Message.ToString();
+        }
+    }
+
+    protected void btnSave_Click(object sender, EventArgs e) {
+        try {
+            row = gvEditArtist.SelectedRow;
+            selectedId = int.Parse(row.Cells[4].Text);
+            if (gvEditArtist.SelectedIndex > -1) {
+                if (txtArtistName.Text != string.Empty && ddlSelectCountry.SelectedIndex > 0 && ddlSelectYear.SelectedIndex > 0) {
+                    string name = txtArtistName.Text;
+                    int year = int.Parse(ddlSelectYear.Text);
+                    string country = ddlSelectCountry.Text;
+                    Artist.UpdateArtist(selectedId, name, country, year);
+                    lblMessages.Text = "Artist " + name + " updated to database.";
+                    txtArtistName.Text = string.Empty;
+                    IniEditArtist();
+                    IniDDL();
+                } else {
+                    lblMessages.Text = "Fill fields first.";
+                }
+            } else {
+                lblMessages.Text = "Select an artist first.";
+            }
+        } catch (Exception ex) {
             lblMessages.Text = ex.Message.ToString();
         }
     }
@@ -95,32 +121,7 @@ public partial class EditArtist : System.Web.UI.Page {
                 IniEditArtist();
                 IniDDL();
             } else {
-                lblMessages.Text = "Select artist first.";
-            }
-        } catch (Exception ex) {
-            lblMessages.Text = ex.Message.ToString();
-        }
-    }
-
-    protected void btnSave_Click(object sender, EventArgs e) {
-        try {
-            row = gvEditArtist.SelectedRow;
-            selectedId = int.Parse(row.Cells[4].Text);
-            if (gvEditArtist.SelectedIndex > -1) {
-                if (txtArtistName.Text != string.Empty) {
-                    string name = txtArtistName.Text;
-                    int year = int.Parse(ddlSelectYear.Text);
-                    string country = ddlSelectCountry.Text;
-                    Artist.UpdateArtist(selectedId, name, country, year);
-                    lblMessages.Text = "Artist " + name + " updated to database.";
-                    txtArtistName.Text = string.Empty;
-                    IniEditArtist();
-                    IniDDL();
-                } else {
-                    lblMessages.Text = "Fill fields first.";
-                }
-            } else {
-                lblMessages.Text = "Select artist first.";
+                lblMessages.Text = "Select an artist first.";
             }
         } catch (Exception ex) {
             lblMessages.Text = ex.Message.ToString();

@@ -308,6 +308,33 @@ namespace MusicDatabase {
                 throw ex;
             }
         }
+
+        public static bool HasTracks(string sqlString, string album) {
+            MySqlConnection conn = new MySqlConnection(connStr);
+            try {
+                conn.Open();
+                bool HasTracks = false;
+                string sql = sqlString;
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@album", album);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.HasRows) {
+                    if (rdr.Read()) {
+                        if (int.Parse(rdr.GetString(0)) > 0) {
+                            HasTracks = true;
+                        } else {
+                            HasTracks = false;
+                        }
+                    }
+                }
+                conn.Close();
+                return HasTracks;
+            } catch (Exception ex) {
+
+                throw ex;
+            }
+        }
+
         public static string GetImageUrl(string sqlString, string album) {
             MySqlConnection conn = new MySqlConnection(connStr);
             try {

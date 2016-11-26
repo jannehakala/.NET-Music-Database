@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="body" Runat="Server">
     <br />
-    <h1 id="pageHeader" style="display:inline-block;margin-right:30px">Artists</h1>
+    <h1 id="pageHeader" class="pageName">Artists</h1>
 
     <asp:Button ID="btnEdit" CssClass="buttons updateButton" PostBackUrl="~/EditArtist.aspx" Text="Edit" runat="server" />
 

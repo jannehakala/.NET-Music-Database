@@ -42,7 +42,7 @@ public partial class EditRecordCompanies : System.Web.UI.Page {
                 txtCompanyName.Text = row.Cells[1].Text;
                 ddlSelectYear.Text = row.Cells[2].Text;
                 ddlSelectCountry.Text = row.Cells[3].Text;
-                btnAdd.Text = "Add company";
+                btnAdd.Text = "Add a company";
                 lblMessages.Text = "Company " + row.Cells[1].Text + " selected.";
                 btnSave.Enabled = true;
                 btnDelete.Enabled = true;
@@ -54,21 +54,23 @@ public partial class EditRecordCompanies : System.Web.UI.Page {
 
     protected void btnAdd_Click(object sender, EventArgs e) {
         try {
-            if (btnAdd.Text == "Add company") {
+            if (btnAdd.Text == "Add a company") {
                 txtCompanyName.Text = string.Empty;
-                btnAdd.Text = "Save new Company";
+                btnAdd.Text = "Save new company";
                 lblMessages.Text = "Add a new company.";
+                txtCompanyName.Focus();
                 btnSave.Enabled = false;
                 btnDelete.Enabled = false;
                 IniDDL();
-            } else if (btnAdd.Text == "Save new Company") {
-                if (txtCompanyName.Text != string.Empty) {
+            } else if (btnAdd.Text == "Save new company") {
+                if (txtCompanyName.Text != string.Empty && ddlSelectYear.SelectedIndex > 0 
+                    && ddlSelectCountry.SelectedIndex > 0) {
                     string name = txtCompanyName.Text;
                     int year = int.Parse(ddlSelectYear.Text);
                     string country = ddlSelectCountry.Text;
                     Company.AddCompany(name, country, year);
                     lblMessages.Text = "Company " + name + " added to database.";
-                    btnAdd.Text = "Add company";
+                    btnAdd.Text = "Add a company";
                     IniEditRecordCompanies();
                     IniDDL();
                     btnSave.Enabled = true;
@@ -79,6 +81,32 @@ public partial class EditRecordCompanies : System.Web.UI.Page {
             }
         } catch (Exception ex) {
 
+            lblMessages.Text = ex.Message.ToString();
+        }
+    }
+
+    protected void btnSave_Click(object sender, EventArgs e) {
+        try {
+            row = gvEditRecordCompanies.SelectedRow;
+            selectedId = int.Parse(row.Cells[4].Text);
+            if (gvEditRecordCompanies.SelectedIndex > -1) {
+                if (txtCompanyName.Text != string.Empty && ddlSelectYear.SelectedIndex > 0
+                    && ddlSelectCountry.SelectedIndex > 0) {
+                    string name = txtCompanyName.Text;
+                    int year = int.Parse(ddlSelectYear.Text);
+                    string country = ddlSelectCountry.Text;
+                    Company.UpdateCompany(selectedId, name, country, year);
+                    lblMessages.Text = "Company " + name + " updated to database.";
+                    txtCompanyName.Text = string.Empty;
+                    IniEditRecordCompanies();
+                    IniDDL();
+                } else {
+                    lblMessages.Text = "Fill fields first.";
+                }
+            } else {
+                lblMessages.Text = "Select a company first.";
+            }
+        } catch (Exception ex) {
             lblMessages.Text = ex.Message.ToString();
         }
     }
@@ -94,32 +122,7 @@ public partial class EditRecordCompanies : System.Web.UI.Page {
                 IniEditRecordCompanies();
                 IniDDL();
             } else {
-                lblMessages.Text = "Select company first.";
-            }
-        } catch (Exception ex) {
-            lblMessages.Text = ex.Message.ToString();
-        }
-    }
-
-    protected void btnSave_Click(object sender, EventArgs e) {
-        try {
-            row = gvEditRecordCompanies.SelectedRow;
-            selectedId = int.Parse(row.Cells[4].Text);
-            if (gvEditRecordCompanies.SelectedIndex > -1) {
-                if (txtCompanyName.Text != string.Empty) {
-                    string name = txtCompanyName.Text;
-                    int year = int.Parse(ddlSelectYear.Text);
-                    string country = ddlSelectCountry.Text;
-                    Company.UpdateCompany(selectedId, name, country, year);
-                    lblMessages.Text = "Company " + name + " updated to database.";
-                    txtCompanyName.Text = string.Empty;
-                    IniEditRecordCompanies();
-                    IniDDL();
-                } else {
-                    lblMessages.Text = "Fill fields first.";
-                }
-            } else {
-                lblMessages.Text = "Select company first.";
+                lblMessages.Text = "Select a company first.";
             }
         } catch (Exception ex) {
             lblMessages.Text = ex.Message.ToString();

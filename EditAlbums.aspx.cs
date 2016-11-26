@@ -9,6 +9,16 @@ using MusicDatabase;
 public partial class EditAlbums : System.Web.UI.Page {
     int selectedId = 0;
     GridViewRow row;
+
+    public override void ProcessRequest(HttpContext context) {
+        try {
+            base.ProcessRequest(context);
+        } catch (HttpRequestValidationException ex) {
+            context.Response.Redirect("HandleValidationError.aspx");
+        }
+
+    }
+
     protected void Page_Load(object sender, EventArgs e) {
         if (!IsPostBack) {
             IniEditAlbums();
@@ -48,7 +58,7 @@ public partial class EditAlbums : System.Web.UI.Page {
                 ddlSelectYear.Text = row.Cells[3].Text;
                 ddlSelectCompany.Text = row.Cells[4].Text;
                 txtImageLink.Text = row.Cells[5].Text;
-                btnAdd.Text = "Add album";
+                btnAdd.Text = "Add an album";
                 lblMessages.Text = "Album " + row.Cells[1].Text + " selected.";
                 btnSave.Enabled = true;
                 btnDelete.Enabled = true;
@@ -75,24 +85,29 @@ public partial class EditAlbums : System.Web.UI.Page {
 
     protected void btnAdd_Click(object sender, EventArgs e) {
         try {
-            if (btnAdd.Text == "Add album") {
+            if (btnAdd.Text == "Add an album") {
                 txtAlbumName.Text = string.Empty;
-                btnAdd.Text = "Save new Album";
+                btnAdd.Text = "Save new album";
                 lblMessages.Text = "Add a new album.";
+                txtAlbumName.Focus();
                 btnSave.Enabled = false;
                 btnDelete.Enabled = false;
                 IniDDL();
-            } else if (btnAdd.Text == "Save new Album") {
-                if (txtAlbumName.Text != string.Empty) {
+            } else if (btnAdd.Text == "Save new album") {
+                if (txtAlbumName.Text != string.Empty && ddlSelectArtist.SelectedIndex > 0 && 
+                    ddlSelectYear.SelectedIndex > 0 && ddlSelectCompany.SelectedIndex > 0) {
                     string name = txtAlbumName.Text;
                     string artist = ddlSelectArtist.Text;
                     string company = ddlSelectCompany.Text;
                     int year = int.Parse(ddlSelectYear.Text);
                     string imglink = txtImageLink.Text;
+                    if (imglink == string.Empty) {
+                        imglink = "http://student.labranet.jamk.fi/~H3298/empty_cd.png";
+                    }
                     
                     Album.AddAlbum(name, artist, company, year, imglink);
                     lblMessages.Text = "Album " + name + " added to database.";
-                    btnAdd.Text = "Add album";
+                    btnAdd.Text = "Add an album";
                     IniEditAlbums();
                     IniDDL();
                     btnSave.Enabled = true;
@@ -112,14 +127,19 @@ public partial class EditAlbums : System.Web.UI.Page {
             row = gvEditAlbums.SelectedRow;
             selectedId = int.Parse(row.Cells[6].Text);
             if (gvEditAlbums.SelectedIndex > -1) {
-                if (txtAlbumName.Text != string.Empty) {
+                if (txtAlbumName.Text != string.Empty && ddlSelectArtist.SelectedIndex > 0 
+                    && ddlSelectYear.SelectedIndex > 0 && ddlSelectCompany.SelectedIndex > 0) {
                     string name = txtAlbumName.Text;
                     string artist = ddlSelectArtist.Text;
                     string company = ddlSelectCompany.Text;
                     int year = int.Parse(ddlSelectYear.Text);
                     string imglink = txtImageLink.Text;
+                    if (imglink == string.Empty) {
+                        imglink = "http://student.labranet.jamk.fi/~H3298/empty_cd.png";
+                    }
+
                     Album.UpdateAlbum(selectedId, name, artist, company, year, imglink);
-                    lblMessages.Text = "Artist " + name + " updated to database.";
+                    lblMessages.Text = "Album " + name + " updated to database.";
                     txtAlbumName.Text = string.Empty;
                     IniEditAlbums();
                     IniDDL();
@@ -127,7 +147,7 @@ public partial class EditAlbums : System.Web.UI.Page {
                     lblMessages.Text = "Fill fields first.";
                 }
             } else {
-                lblMessages.Text = "Select artist first.";
+                lblMessages.Text = "Select an album first.";
             }
         } catch (Exception ex) {
             lblMessages.Text = ex.Message.ToString();
@@ -145,7 +165,7 @@ public partial class EditAlbums : System.Web.UI.Page {
                 IniEditAlbums();
                 IniDDL();
             } else {
-                lblMessages.Text = "Select album first.";
+                lblMessages.Text = "Select an album first.";
             }
         } catch (Exception ex) {
             lblMessages.Text = ex.Message.ToString();

@@ -29,7 +29,7 @@ public partial class EditGenre : System.Web.UI.Page {
             try {
                 row = gvEditGenre.SelectedRow;
                 txtGenreName.Text = row.Cells[1].Text;
-                btnAdd.Text = "Add genre";
+                btnAdd.Text = "Add a genre";
                 lblMessages.Text = "Genre " + row.Cells[1].Text + " selected.";
                 btnSave.Enabled = true;
                 btnDelete.Enabled = true;
@@ -51,18 +51,19 @@ public partial class EditGenre : System.Web.UI.Page {
 
     protected void btnAdd_Click(object sender, EventArgs e) {
         try {
-            if (btnAdd.Text == "Add genre") {
+            if (btnAdd.Text == "Add a genre") {
                 txtGenreName.Text = string.Empty;
-                btnAdd.Text = "Save new Genre";
+                btnAdd.Text = "Save new genre";
                 lblMessages.Text = "Add a new genre.";
+                txtGenreName.Focus();
                 btnSave.Enabled = false;
                 btnDelete.Enabled = false;
-            } else if (btnAdd.Text == "Save new Genre") {
+            } else if (btnAdd.Text == "Save new genre") {
                 if (txtGenreName.Text != string.Empty) {
                     string name = txtGenreName.Text;
                     Genre.AddGenre(name);
                     lblMessages.Text = "Genre " + name + " added to database.";
-                    btnAdd.Text = "Add genre";
+                    btnAdd.Text = "Add a genre";
                     IniEditGenre();
                     btnSave.Enabled = true;
                     btnDelete.Enabled = true;
@@ -91,7 +92,7 @@ public partial class EditGenre : System.Web.UI.Page {
                     lblMessages.Text = "Fill fields first.";
                 }
             } else {
-                lblMessages.Text = "Select genre first.";
+                lblMessages.Text = "Select a genre first.";
             }
         } catch (Exception ex) {
             lblMessages.Text = ex.Message.ToString();
@@ -108,7 +109,7 @@ public partial class EditGenre : System.Web.UI.Page {
                 txtGenreName.Text = string.Empty;
                 IniEditGenre();
             } else {
-                lblMessages.Text = "Select genre first.";
+                lblMessages.Text = "Select a genre first.";
             }
         } catch (Exception ex) {
             lblMessages.Text = ex.Message.ToString();

@@ -82,6 +82,11 @@ iframe {
     margin-left: 5px;
 }
 
+.pageName{
+    display:inline-block;
+    margin-right:30px;
+}
+
 #headerBar {
     height: 50px;
     background-color: #575757;
