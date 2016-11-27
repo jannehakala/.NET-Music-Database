@@ -40,8 +40,8 @@ public partial class EditRecordCompanies : System.Web.UI.Page {
             try {
                 row = gvEditRecordCompanies.SelectedRow;
                 txtCompanyName.Text = row.Cells[1].Text;
-                ddlSelectYear.Text = row.Cells[2].Text;
-                ddlSelectCountry.Text = row.Cells[3].Text;
+                ddlSelectCountry.Text = row.Cells[2].Text;
+                ddlSelectYear.Text = row.Cells[3].Text;
                 btnAdd.Text = "Add a company";
                 lblMessages.Text = "Company " + row.Cells[1].Text + " selected.";
                 btnSave.Enabled = true;

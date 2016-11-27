@@ -22,12 +22,12 @@
         </asp:Panel>
         <br />
         <br />
-        <span>Select a year:</span><br />
-        <asp:DropDownList ID="ddlSelectYear" CssClass="comboYear" runat="server"></asp:DropDownList>
-        <br />
-        <br />
         <span>Select a country:</span><br />
-        <asp:DropDownList ID="ddlSelectCountry" CssClass="comboCountry" runat="server"></asp:DropDownList>
+        <asp:DropDownList ID="ddlSelectCountry" CssClass="comboBox" runat="server"></asp:DropDownList>
+        <br />
+        <br />
+        <span>Select a year:</span><br />
+        <asp:DropDownList ID="ddlSelectYear" CssClass="comboBox" runat="server"></asp:DropDownList>
         <br />
         <br />
         <asp:Button ID="btnAdd" Text="Add a company" CssClass="buttons addButton" OnClick="btnAdd_Click" runat="server" />

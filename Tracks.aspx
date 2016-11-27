@@ -25,7 +25,7 @@
             </div>
             <br />
             Add track to an existing playlist:
-        <asp:DropDownList ID="ddlPlaylistNames" CssClass="comboPlaylists" runat="server"></asp:DropDownList><br />
+        <asp:DropDownList ID="ddlPlaylistNames" CssClass="comboBox" runat="server"></asp:DropDownList><br />
             <br />
             <div id="btnAddDiv">
                 <asp:Button ID="btnAdd" OnClick="btnAdd_Click" runat="server" CssClass="buttons btnAdd" Text="Add" />

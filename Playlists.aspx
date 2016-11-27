@@ -4,7 +4,7 @@
 
     <br />
     <h1 id="pageHeader">Playlists</h1>
-    <asp:DropDownList ID="ddlPlaylistNames" OnSelectedIndexChanged="ddlPlaylistNames_SelectedIndexChanged" AutoPostBack="true" CssClass="comboPlaylists" runat="server"></asp:DropDownList>
+    <asp:DropDownList ID="ddlPlaylistNames" OnSelectedIndexChanged="ddlPlaylistNames_SelectedIndexChanged" AutoPostBack="true" CssClass="comboBox" runat="server"></asp:DropDownList>
     
     <asp:Button id="btnAddPlaylist" style="margin-left:20px;" Text="Add a new playlist" OnClick="btnAddPlaylist_Click" 
         CssClass="buttons addButton" runat="server"> 

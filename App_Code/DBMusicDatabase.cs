@@ -183,7 +183,7 @@ namespace MusicDatabase {
                     message = "";
                     conn.Open();
                     string passwordCrypted = "";
-                    string passwordClean = "";
+                    bool validate = false;
                     string sql = "select salasana from user where tunnus=@username";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@username", username);
@@ -194,12 +194,14 @@ namespace MusicDatabase {
                             passwordCrypted = rdr.GetString(0);
                         }
                     }
-                    passwordClean = BLLogin.Decrypt(passwordCrypted);
+                    validate = BLLogin.ValidatePassword(password, passwordCrypted);
+
                     rdr.Close();
                     conn.Close();
-                    if (passwordClean == password) {
+                    if (validate) {
                         return true;
                     }
+
                     message = "Username or password is invalid!";
                     return false;
                 }
@@ -212,7 +214,7 @@ namespace MusicDatabase {
             try {
                 conn.Open();
                 string sql = sqlString;
-                string passW = BLRegister.EncryptPassword(password);
+                string passW = BLRegister.HashPassword(password);
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Prepare();
                 cmd.Parameters.AddWithValue("@USERNAME", username);

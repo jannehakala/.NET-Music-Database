@@ -50,7 +50,7 @@ public partial class EditTracks : System.Web.UI.Page {
         txtLength.Text = string.Empty;
         txtTubeLink.Text = string.Empty;
         ddlSelectAlbum.SelectedIndex = 0;
-        ddlSelectYear.SelectedIndex = -1;
+        ddlSelectYear.SelectedIndex = 0;
         ddlSelectArtist.SelectedIndex = 0;
         ddlSelectGenre.SelectedIndex = 0;
     }
@@ -72,9 +72,7 @@ public partial class EditTracks : System.Web.UI.Page {
                 txtNumber.Text = row.Cells[6].Text;
                 txtLength.Text = row.Cells[7].Text;
                 ddlSelectGenre.Text = row.Cells[8].Text;
-                
-                
-                
+
                 btnAdd.Text = "Add a track";
                 lblMessages.Text = "Track " + row.Cells[1].Text + " selected.";
                 btnSave.Enabled = true;
@@ -100,7 +98,7 @@ public partial class EditTracks : System.Web.UI.Page {
     protected void btnAdd_Click(object sender, EventArgs e) {
         try {
             if (btnAdd.Text == "Add a track") {
-                txtTrackName.Text = string.Empty;
+      
                 btnAdd.Text = "Save new track";
                 lblMessages.Text = "Add a new track.";
                 txtTrackName.Focus();

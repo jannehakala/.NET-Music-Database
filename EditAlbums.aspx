@@ -23,15 +23,15 @@
         <br />
         <br />
         <span>Select an artist:</span><br />
-        <asp:DropDownList ID="ddlSelectArtist" CssClass="comboArtist" runat="server"></asp:DropDownList>
+        <asp:DropDownList ID="ddlSelectArtist" CssClass="comboBox" runat="server"></asp:DropDownList>
         <br />
         <br />
         <span>Select a year:</span><br />
-        <asp:DropDownList ID="ddlSelectYear" CssClass="comboYear" runat="server"></asp:DropDownList>
+        <asp:DropDownList ID="ddlSelectYear" CssClass="comboBox" runat="server"></asp:DropDownList>
         <br />
         <br /> 
         <span>Select a company:</span><br />
-        <asp:DropDownList ID="ddlSelectCompany" CssClass="comboCompany" runat="server"></asp:DropDownList>
+        <asp:DropDownList ID="ddlSelectCompany" CssClass="comboBox" runat="server"></asp:DropDownList>
         <br />
         <br />
         <span>Image link:</span><br />

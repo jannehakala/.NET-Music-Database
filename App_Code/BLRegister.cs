@@ -13,27 +13,13 @@ namespace MusicDatabase {
         private string username;
         private string password;
 
+        private const int SaltByteSize = 24;
+        private const int HashByteSize = 20;
+        private const int Pbkdf2Iterations = 1000;
+
         public BLRegister(string username, string password) {
             this.username = username;
-            this.password = EncryptPassword(password);
-        }
-
-        public static string EncryptPassword(string password) {
-            string EncryptionKey = "MAKV2SPBNI99212";
-            byte[] clearBytes = Encoding.Unicode.GetBytes(password);
-            using (Aes encryptor = Aes.Create()) {
-                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
-                encryptor.Key = pdb.GetBytes(32);
-                encryptor.IV = pdb.GetBytes(16);
-                using (MemoryStream ms = new MemoryStream()) {
-                    using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write)) {
-                        cs.Write(clearBytes, 0, clearBytes.Length);
-                        cs.Close();
-                    }
-                    password = Convert.ToBase64String(ms.ToArray());
-                }
-            }
-            return password;
+            this.password = HashPassword(password);
         }
 
         public bool RegisterUser(out string messageToUser) {
@@ -50,9 +36,23 @@ namespace MusicDatabase {
             } catch (Exception ex) {
                 throw ex;
             }
+        }        
+
+        public static string HashPassword(string password) {
+            var cryptoProvider = new RNGCryptoServiceProvider();
+            byte[] salt = new byte[SaltByteSize];
+            cryptoProvider.GetBytes(salt);
+
+            var hash = GetPbkdf2Bytes(password, salt, Pbkdf2Iterations, HashByteSize);
+            return Pbkdf2Iterations + ":" +
+                   Convert.ToBase64String(salt) + ":" +
+                   Convert.ToBase64String(hash);
         }
-        public static class User {
-            public static string user = "guest";
+
+        private static byte[] GetPbkdf2Bytes(string password, byte[] salt, int iterations, int outputBytes) {
+            var pbkdf2 = new Rfc2898DeriveBytes(password, salt);
+            pbkdf2.IterationCount = iterations;
+            return pbkdf2.GetBytes(outputBytes);
         }
     }
 }

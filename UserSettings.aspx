@@ -14,15 +14,18 @@
     ﻿﻿﻿<div id="changePass">
         <h3 id="userName" runat="server"></h3>
         <h3>Change password:</h3>
-        New password:
-        <br />
+
         <asp:Panel runat="server" DefaultButton="btnChangePassword">
+            Old password:<br />
+            <asp:TextBox ID="txtOldPassword" TextMode="Password" runat="server"/><br /><br />
+            New password:
+        <br />
             <asp:TextBox ID="txtPassword" TextMode="Password" runat="server" /><br />
             Re-enter new password:<br />
             <asp:TextBox ID="txtRePassword" TextMode="Password" runat="server" /><br />
-        </asp:Panel>
+        </asp:Panel><br />
         <asp:Button ID="btnChangePassword" CssClass="buttons updateButton" Text="Change password" OnClick="btnChangePassword_Click"
-            OnClientClick="return confirm('Are you sure you want to change your password?')" runat="server"></asp:Button><br />
+             runat="server"></asp:Button><br />
     </div>
     <br />
     <asp:Label ID="lblMessages" runat="server" />
