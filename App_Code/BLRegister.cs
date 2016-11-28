@@ -15,7 +15,7 @@ namespace MusicDatabase {
 
         private const int SaltByteSize = 24;
         private const int HashByteSize = 20;
-        private const int Pbkdf2Iterations = 1000;
+        private const int Pbkdf2Iterations = 100000;
 
         public BLRegister(string username, string password) {
             this.username = username;
