@@ -10,27 +10,40 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div id="errorMessageContainer" runat="server">
-            <div id="errorMessage" runat="server"></div>
-        </div>
+        <div>
+            <div id="errorMessageContainer" runat="server">
+                <div id="errorMessage" runat="server"></div>
+            </div>
+            <div id="formContainerLoginRegister">
+                <asp:Login ID="loginAuthenticate" runat="server" OnAuthenticate="login_Authenticate" TitleText="Music Database - Login">
 
-        <div id="formContainerLoginRegister">
-            <h1>Music Database</h1>
-            <h2>Login</h2>
-            Username:<br />
-            <asp:Panel runat="server" DefaultButton="btnRegisterLoginForm">
-                <asp:TextBox ID="txtUsername" runat="server"></asp:TextBox><br />
-                Password:<br />
-                <asp:TextBox ID="txtPassword" TextMode="Password" runat="server"></asp:TextBox><br />
-            </asp:Panel>
-            <br />
-            <a href="Register.aspx" class="accountQ">Don't have an account? Register here.</a><br />
-            <a href="LoginAuthenticate.aspx" class="accountQ">Login with authentication.</a><br />
-            <asp:Button ID='btnRegisterLoginForm' OnClick="btnLogin_Click" Text='Login' CssClass="buttons" runat="server" /><br />
-            <asp:Button ID='btnBackToMain' CssClass='buttons' PostBackUrl="Home.aspx" Text="Back to Music database" runat="server"></asp:Button><br />
-            <asp:Label ID="lblMessage" Font-Size="20px" ForeColor="LightGreen" runat="server"></asp:Label>
-        </div>
+                    <LayoutTemplate>
 
+                        <div class="formLogin">
+                            <h1 style="">Music Database</h1>
+                            <h2>Login</h2>
+                            Username:<br />
+                            <asp:Panel runat="server" DefaultButton="btnLogin">
+                                <asp:TextBox ID="UserName" runat="server"></asp:TextBox><br />
+                                Password:<br />
+                                <asp:TextBox ID="Password" runat="server" TextMode="Password"></asp:TextBox>
+
+                            </asp:Panel>
+                            <br />
+                            <a href="Register.aspx" class="accountQ">Don't have an account? Register here.</a><br />
+                            <asp:Button ID="btnLogin" runat="server" CommandName="Login" CssClass="buttons buttonsLoginRegister btnRegisterLoginForm" Text="Login" ValidationGroup="loginAuthenticate" /><br />
+                            <asp:Button ID='btnBackToMain' CssClass='buttons buttonsLoginRegister btnBackToMain' PostBackUrl="Home.aspx" Text="Back to Music database" runat="server" /><br />
+                            <asp:Label ID="lblMessage" Font-Size="20px" ForeColor="LightGreen" runat="server"></asp:Label>
+
+                            <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" ValidationGroup="loginAuthenticate"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ValidationGroup="loginAuthenticate"></asp:RequiredFieldValidator>
+                        </div>
+                    </LayoutTemplate>
+                </asp:Login>
+                <asp:LinkButton ID="btnLoginGuest" Text="View as a guest." runat="server" CausesValidation="False" OnClick="btnLoginGuest_Click">         
+                </asp:LinkButton>
+            </div>
+        </div>
     </form>
 </body>
 </html>

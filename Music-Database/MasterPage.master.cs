@@ -19,16 +19,19 @@ public partial class MasterPage : System.Web.UI.MasterPage {
             }
 
             if (usertype == "admin") {
+                playlists.Attributes.Add("style", "display:default");
                 userSettings.Attributes.Add("style", "display:default");
                 userNameLink.Attributes.Add("href", "UserSettings.aspx");
             }
 
             if (usertype == "user") {
+                playlists.Attributes.Add("style", "display:default");
                 userSettings.Attributes.Add("style", "display:default");
                 userNameLink.Attributes.Add("href", "UserSettings.aspx");
             }
 
             if (usertype == "guest") {
+                playlists.Attributes.Add("style", "display:none");
                 userSettings.Attributes.Add("style", "display:none");
                 userNameLink.Attributes.Add("href", "Home.aspx");
             }
@@ -49,7 +52,7 @@ public partial class MasterPage : System.Web.UI.MasterPage {
 
 
     protected void btnSearch_Click(object sender, EventArgs e) {
-       string srcparam = txtInput.Text;
+        string srcparam = txtInput.Text;
 
         string currentpage = (string)Session["currentpage"];
         switch (currentpage) {
@@ -58,17 +61,16 @@ public partial class MasterPage : System.Web.UI.MasterPage {
                 Label lblArtist = (Label)body.FindControl("lblMessages");
                 gvArtist.DataSource = Artist.SearchArtist("%" + srcparam + "%");
                 gvArtist.DataBind();
-                if (gvArtist.Rows.Count == 0){
-                    lblArtist.Text = string.Format("Nothing found");                   
-                }              
+                if (gvArtist.Rows.Count == 0) {
+                    lblArtist.Text = string.Format("Nothing found");
+                }
                 break;
             case "Albums":
                 GridView gvAlbums = (GridView)body.FindControl("gvAlbums");
                 Label lblAlbum = (Label)body.FindControl("lblMessages");
                 gvAlbums.DataSource = Album.SearchAlbum("%" + srcparam + "%");
                 gvAlbums.DataBind();
-                if (gvAlbums.Rows.Count == 0)
-                {
+                if (gvAlbums.Rows.Count == 0) {
                     lblAlbum.Text = string.Format("Nothing found");
                 }
                 break;
@@ -77,8 +79,7 @@ public partial class MasterPage : System.Web.UI.MasterPage {
                 Label lblTracks = (Label)body.FindControl("lblMessages");
                 gvTracks.DataSource = Track.SearchTrack("%" + srcparam + "%");
                 gvTracks.DataBind();
-                if (gvTracks.Rows.Count == 0)
-                {
+                if (gvTracks.Rows.Count == 0) {
                     lblTracks.Text = string.Format("Nothing found");
                 }
                 break;
@@ -87,8 +88,7 @@ public partial class MasterPage : System.Web.UI.MasterPage {
                 Label lblGenres = (Label)body.FindControl("lblMessages");
                 gvGenres.DataSource = Genre.SearchGenre("%" + srcparam + "%");
                 gvGenres.DataBind();
-                if (gvGenres.Rows.Count == 0)
-                {
+                if (gvGenres.Rows.Count == 0) {
                     lblGenres.Text = string.Format("Nothing found");
                 }
                 break;
@@ -97,34 +97,19 @@ public partial class MasterPage : System.Web.UI.MasterPage {
                 Label lblCompany = (Label)body.FindControl("lblMessages");
                 gvRecordCompanies.DataSource = Company.SearchCompanies("%" + srcparam + "%");
                 gvRecordCompanies.DataBind();
-                if (gvRecordCompanies.Rows.Count == 0)
-                {
+                if (gvRecordCompanies.Rows.Count == 0) {
                     lblCompany.Text = string.Format("Nothing found");
                 }
                 break;
             case "Home":
                 Response.Redirect("Artists.aspx");
-                //GridView gvHomeArtist = (GridView)body.FindControl("gvArtist");
-                //Label lblHomeArtist = (Label)body.FindControl("lblMessages");
-                //lblHomeArtist.Text = string.Format("Home page doesn't contain anything to search. You were redirected to Artists page");
-                //gvHomeArtist.DataSource = Artist.SearchArtist("%" + srcparam + "%");
-                //gvHomeArtist.DataBind();
-                //if (gvHomeArtist.Rows.Count == 0)
-                //{
-                //    lblHomeArtist.Text = string.Format("Nothing found");
-                //}
                 break;
             case "About":
                 Response.Redirect("Artists.aspx");
                 break;
 
             default:
-                break; 
+                break;
         }
-
-
-
-        
-        
     }
 }

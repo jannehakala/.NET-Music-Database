@@ -82,9 +82,9 @@ iframe {
     margin-left: 5px;
 }
 
-.pageName{
-    display:inline-block;
-    margin-right:30px;
+.pageName {
+    display: inline-block;
+    margin-right: 30px;
 }
 
 #headerBar {
@@ -416,19 +416,19 @@ table.query td {
         color: white;
     }
 
-#btnRegisterLoginForm, #btnBackToLogin, #btnBackToMain {
+.buttonsLoginRegister {
     padding: 10px 10px 10px;
     font-size: 16px;
     margin-bottom: 10px;
     border-radius: 10px;
 }
 
-#btnRegisterLoginForm {
+.btnRegisterLoginForm {
     margin-top: 15px;
     background-color: #ACCB12;
 }
 
-#btnBackToLogin, #btnBackToMain {
+.btnBackToLogin, .btnBackToMain {
     background-color: #DD514C;
 }
 
@@ -437,7 +437,7 @@ table.query td {
     margin-right: 10px;
 }
 
-.btnCreate{
+.btnCreate {
     background-color: #FF9900;
 }
 
@@ -446,7 +446,7 @@ table.query td {
     margin-left: 10px;
 }
 
-.buttonSelectPlaylist{
+.buttonSelectPlaylist {
     margin-left: 10px;
 }
 
@@ -460,6 +460,14 @@ table.query td {
     padding: 10px;
     transform: translateY(30%);
     color: white;
+}
+
+#btnLoginGuest:hover {
+    text-decoration: underline;
+}
+
+.formLogin {
+    transform: translateX(30%);
 }
 
 .artistLinkCss {
@@ -479,9 +487,9 @@ table.query td {
     font-size: 14px;
 }
 
-    #accountQ:hover {
-        text-decoration: underline;
-    }
+.accountQ:hover {
+    text-decoration: underline;
+}
 
 input {
     font-size: 15px;

@@ -43,8 +43,8 @@
                         <tr>
                             <td class="test" onclick="window.location.href='/Home.aspx'">Home</td>
                         </tr>
-                        <tr>
-                            <td onclick="window.location.href='/Playlists.aspx'">Playlists</td>
+                        <tr id="playlists" runat="server">
+                            <td onclick="window.location.href='/EditPages/Playlists.aspx'">Playlists</td>
                         </tr>
                         <tr>
                             <td onclick="window.location.href='/Artists.aspx'">Artists</td>

@@ -9,10 +9,11 @@ public partial class Home : System.Web.UI.Page {
     protected void Page_Load(object sender, EventArgs e) {
         string username = (string)Session["username"];
         Session["currentpage"] = "Home";
-        pageHeader.InnerText = "Welcome, Guest!";
 
         if (username != null) {
             pageHeader.InnerText = "Welcome, " + username + "!";
+        } else {
+            pageHeader.InnerText = "Welcome, guest!";
         }
     }
 }
