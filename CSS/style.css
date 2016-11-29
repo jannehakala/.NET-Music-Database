@@ -474,7 +474,7 @@ table.query td {
     cursor: pointer;
 }
 
-#accountQ {
+.accountQ {
     color: #1FEDDE;
     font-size: 14px;
 }

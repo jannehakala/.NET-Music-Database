@@ -24,7 +24,8 @@
                 <asp:TextBox ID="txtPassword" TextMode="Password" runat="server"></asp:TextBox><br />
             </asp:Panel>
             <br />
-            <a href="Register.aspx" id="accountQ">Don't have an account? Register here.</a><br />
+            <a href="Register.aspx" class="accountQ">Don't have an account? Register here.</a><br />
+            <a href="LoginAuthenticate.aspx" class="accountQ">Login with authentication.</a><br />
             <asp:Button ID='btnRegisterLoginForm' OnClick="btnLogin_Click" Text='Login' CssClass="buttons" runat="server" /><br />
             <asp:Button ID='btnBackToMain' CssClass='buttons' PostBackUrl="Home.aspx" Text="Back to Music database" runat="server"></asp:Button><br />
             <asp:Label ID="lblMessage" Font-Size="20px" ForeColor="LightGreen" runat="server"></asp:Label>

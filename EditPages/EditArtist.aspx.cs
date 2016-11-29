@@ -139,6 +139,6 @@ public partial class EditArtist : System.Web.UI.Page {
     }
 
     protected void btnBack_ServerClick(object sender, EventArgs e) {
-        Response.Redirect("Artists.aspx");
+        Response.Redirect("~/Artists.aspx");
     }
 }

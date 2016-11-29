@@ -42,7 +42,7 @@ public partial class MasterPage : System.Web.UI.MasterPage {
                 btnLogin.Attributes.Add("style", "display:default");
                 btnSignUp.Attributes.Add("style", "display:default");
                 btnLogout.Attributes.Add("style", "display:none");
-                loggedAs.InnerText = "Guest";
+                loggedAs.InnerText = "guest";
             }
         }
     }

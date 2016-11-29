@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="body" runat="Server">
     <br />
     <h1 id="pageHeader" class="pageName">Tracks</h1>
-    <asp:Button ID="btnEdit" CssClass="buttons updateButton" PostBackUrl="~/EditTracks.aspx" Text="Edit" runat="server" />
+    <asp:Button ID="btnEdit" CssClass="buttons updateButton" PostBackUrl="~/EditPages/EditTracks.aspx" Text="Edit" runat="server" />
     <asp:GridView ID="gvTracks" AutoGenerateSelectButton="false" CssClass="query" OnRowDataBound="gvTracks_RowDataBound" OnSelectedIndexChanged="gvTracks_SelectedIndexChanged" runat="server">
         <Columns>
             <asp:ButtonField CommandName="Select" HeaderText="Add" Text="+" />

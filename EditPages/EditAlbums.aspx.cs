@@ -80,7 +80,7 @@ public partial class EditAlbums : System.Web.UI.Page {
     }
 
     protected void btnBack_ServerClick(object sender, EventArgs e) {
-        Response.Redirect("Albums.aspx");
+        Response.Redirect("~/Albums.aspx");
     }
 
     protected void btnAdd_Click(object sender, EventArgs e) {

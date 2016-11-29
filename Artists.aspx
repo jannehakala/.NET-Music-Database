@@ -4,7 +4,7 @@
     <br />
     <h1 id="pageHeader" class="pageName">Artists</h1>
 
-    <asp:Button ID="btnEdit" CssClass="buttons updateButton" PostBackUrl="~/EditArtist.aspx" Text="Edit" runat="server" />
+    <asp:Button ID="btnEdit" CssClass="buttons updateButton" PostBackUrl="~/EditPages/EditArtist.aspx" Text="Edit" runat="server" />
 
     <asp:GridView ID="gvArtist" CssClass="query" OnRowDataBound="gvArtist_RowDataBound" runat="server">
     </asp:GridView>

@@ -21,7 +21,7 @@ public partial class EditGenre : System.Web.UI.Page {
     }
 
     protected void btnBack_ServerClick(object sender, EventArgs e) {
-        Response.Redirect("Genres.aspx");
+        Response.Redirect("~/Genres.aspx");
     }
 
     protected void gvEditGenre_SelectedIndexChanged(object sender, EventArgs e) {

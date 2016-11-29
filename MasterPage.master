@@ -41,31 +41,31 @@
                 <div id="sideBar">
                     <table class="sidebar">
                         <tr>
-                            <td class="test" onclick="window.location.href='Home.aspx'">Home</td>
+                            <td class="test" onclick="window.location.href='/Home.aspx'">Home</td>
                         </tr>
                         <tr>
-                            <td onclick="window.location.href='Playlists.aspx'">Playlists</td>
+                            <td onclick="window.location.href='/Playlists.aspx'">Playlists</td>
                         </tr>
                         <tr>
-                            <td onclick="window.location.href='Artists.aspx'">Artists</td>
+                            <td onclick="window.location.href='/Artists.aspx'">Artists</td>
                         </tr>
                         <tr>
-                            <td onclick="window.location.href='Albums.aspx'">Albums</td>
+                            <td onclick="window.location.href='/Albums.aspx'">Albums</td>
                         </tr>
                         <tr>
-                            <td onclick="window.location.href='Tracks.aspx'">Tracks</td>
+                            <td onclick="window.location.href='/Tracks.aspx'">Tracks</td>
                         </tr>
                         <tr>
-                            <td onclick="window.location.href='Genres.aspx'">Genres</td>
+                            <td onclick="window.location.href='/Genres.aspx'">Genres</td>
                         </tr>
                         <tr>
-                            <td onclick="window.location.href='RecordCompanies.aspx'">Record companies</td>
+                            <td onclick="window.location.href='/RecordCompanies.aspx'">Record companies</td>
                         </tr>
                         <tr>
-                            <td onclick="window.location.href='About.aspx'">About</td>
+                            <td onclick="window.location.href='/About.aspx'">About</td>
                         </tr>
                         <tr id="userSettings" runat="server">
-                            <td onclick="window.location.href='UserSettings.aspx'">User settings</td>
+                            <td onclick="window.location.href='/EditPages/UserSettings.aspx'">User settings</td>
                         </tr>
                     </table>
                 </div>

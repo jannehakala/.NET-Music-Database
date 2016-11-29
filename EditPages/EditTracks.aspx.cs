@@ -57,7 +57,7 @@ public partial class EditTracks : System.Web.UI.Page {
 
 
     protected void btnBack_ServerClick(object sender, EventArgs e) {
-        Response.Redirect("Tracks.aspx");
+        Response.Redirect("~/Tracks.aspx");
     }
 
     protected void gvEditTracks_SelectedIndexChanged(object sender, EventArgs e) {

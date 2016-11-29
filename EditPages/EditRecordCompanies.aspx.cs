@@ -140,6 +140,6 @@ public partial class EditRecordCompanies : System.Web.UI.Page {
     }
 
     protected void btnBack_ServerClick(object sender, EventArgs e) {
-        Response.Redirect("RecordCompanies.aspx");
+        Response.Redirect("~/RecordCompanies.aspx");
     }
 }
