@@ -68,6 +68,7 @@ public partial class Login : System.Web.UI.Page {
                 return false;
             }
         } catch (Exception ex) {
+            passwordTextBox.Focus();
             errorMessage.InnerText = ex.Message;
         } finally {
             if (message != string.Empty) {

@@ -19,7 +19,7 @@
 
                     <LayoutTemplate>
 
-                        <div class="formLogin">
+                        <div class="formLogin" runat="server">
                             <h1 style="">Music Database</h1>
                             <h2>Login</h2>
                             Username:<br />
@@ -33,7 +33,7 @@
                             <a href="Register.aspx" class="accountQ">Don't have an account? Register here.</a><br />
                             <asp:Button ID="btnLogin" runat="server" CommandName="Login" CssClass="buttons buttonsLoginRegister btnRegisterLoginForm" Text="Login" ValidationGroup="loginAuthenticate" /><br />
                             <asp:Button ID='btnBackToMain' CssClass='buttons buttonsLoginRegister btnBackToMain' PostBackUrl="Home.aspx" Text="Back to Music database" runat="server" /><br />
-                            <asp:Label ID="lblMessage" Font-Size="20px" ForeColor="LightGreen" runat="server"></asp:Label>
+                            
 
                             <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" ValidationGroup="loginAuthenticate"></asp:RequiredFieldValidator>
                             <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ValidationGroup="loginAuthenticate"></asp:RequiredFieldValidator>
@@ -41,7 +41,8 @@
                     </LayoutTemplate>
                 </asp:Login>
                 <asp:LinkButton ID="btnLoginGuest" Text="View as a guest." runat="server" CausesValidation="False" OnClick="btnLoginGuest_Click">         
-                </asp:LinkButton>
+                </asp:LinkButton><br />
+                <asp:Label ID="lblMessages" Font-Size="20px" ForeColor="LightGreen" runat="server"></asp:Label>
             </div>
         </div>
     </form>

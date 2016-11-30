@@ -28,7 +28,7 @@ public partial class Register : System.Web.UI.Page {
                     errorMessageContainer.Style["background-color"] = "green";
                     errorMessage.InnerText = "Registration was successful!";
                     lblMessage.Text = "Registering...";
-                    Response.AddHeader("REFRESH", "1;URL=Login.aspx");
+                    Response.AddHeader("REFRESH", "0.5;URL=Login.aspx");
                     txtPassword.Attributes["value"] = password;
                     txtRePassword.Attributes["value"] = repassword;
                 } else {
