@@ -19,20 +19,20 @@ public partial class MasterPage : System.Web.UI.MasterPage {
             }
 
             if (usertype == "admin") {
-                playlists.Attributes.Add("style", "display:default");
-                userSettings.Attributes.Add("style", "display:default");
+                //playlists.Attributes.Add("style", "display:default");
+                //userSettings.Attributes.Add("style", "display:default");
                 userNameLink.Attributes.Add("href", "UserSettings.aspx");
             }
 
             if (usertype == "user") {
-                playlists.Attributes.Add("style", "display:default");
-                userSettings.Attributes.Add("style", "display:default");
+                //playlists.Attributes.Add("style", "display:default");
+                //userSettings.Attributes.Add("style", "display:default");
                 userNameLink.Attributes.Add("href", "UserSettings.aspx");
             }
 
             if (usertype == "guest") {
-                playlists.Attributes.Add("style", "display:none");
-                userSettings.Attributes.Add("style", "display:none");
+                //playlists.Attributes.Add("style", "display:none");
+                //userSettings.Attributes.Add("style", "display:none");
                 userNameLink.Attributes.Add("href", "Home.aspx");
             }
 
@@ -102,10 +102,13 @@ public partial class MasterPage : System.Web.UI.MasterPage {
                 }
                 break;
             case "Home":
-                Response.Redirect("Artists.aspx");
+                Response.Redirect("~/Artists.aspx");
                 break;
             case "About":
-                Response.Redirect("Artists.aspx");
+                Response.Redirect("~/Artists.aspx");
+                break;
+            case "Edit":
+                Response.Redirect("~/Artists.aspx");
                 break;
 
             default:

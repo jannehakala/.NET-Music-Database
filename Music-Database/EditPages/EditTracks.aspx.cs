@@ -24,6 +24,7 @@ public partial class EditTracks : System.Web.UI.Page {
             IniEditTracks();
             IniDDL();
         }
+        Session["currentpage"] = "Edit";
     }
 
     protected void IniEditTracks() {

@@ -13,6 +13,7 @@ public partial class EditGenre : System.Web.UI.Page {
         if (!IsPostBack) {
             IniEditGenre();
         }
+        Session["currentpage"] = "Edit";
     }
 
     protected void IniEditGenre() {

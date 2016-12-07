@@ -24,6 +24,7 @@ public partial class EditAlbums : System.Web.UI.Page {
             IniEditAlbums();
             IniDDL();
         }
+        Session["currentpage"] = "Edit";
     }
 
     protected void IniEditAlbums() {

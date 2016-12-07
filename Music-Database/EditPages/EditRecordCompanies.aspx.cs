@@ -14,6 +14,7 @@ public partial class EditRecordCompanies : System.Web.UI.Page {
             IniEditRecordCompanies();
             IniDDL();
         }
+        Session["currentpage"] = "Edit";
     }
 
     protected void IniEditRecordCompanies() {

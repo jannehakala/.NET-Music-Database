@@ -25,6 +25,7 @@ public partial class User : System.Web.UI.Page {
         userName.InnerText = user;
         txtPassword.Attributes.Add("onkeypress", "button_click(this,'" + this.btnChangePassword.ClientID + "')");
         txtRePassword.Attributes.Add("onkeypress", "button_click(this,'" + this.btnChangePassword.ClientID + "')");
+        Session["currentpage"] = "Edit";
     }
 
     protected void btnChangePassword_Click(object sender, EventArgs e) {

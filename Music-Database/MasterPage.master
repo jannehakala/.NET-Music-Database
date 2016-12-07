@@ -41,31 +41,31 @@
                 <div id="sideBar">
                     <table class="sidebar">
                         <tr>
-                            <td class="test" onclick="window.location.href='/Home.aspx'">Home</td>
+                            <td class="test" onclick="window.location.href='<%= Page.ResolveUrl("~/Home.aspx") %>'">Home</td>
                         </tr>
-                        <tr id="playlists" runat="server">
-                            <td onclick="window.location.href='/EditPages/Playlists.aspx'">Playlists</td>
-                        </tr>
-                        <tr>
-                            <td onclick="window.location.href='/Artists.aspx'">Artists</td>
+                        <tr id="playlists" >
+                            <td  onclick="window.location.href='<%= Page.ResolveUrl("~/EditPages/Playlists.aspx") %>'">Playlists</td>
                         </tr>
                         <tr>
-                            <td onclick="window.location.href='/Albums.aspx'">Albums</td>
+                            <td onclick="window.location.href='<%= Page.ResolveUrl("~/Artists.aspx") %>'">Artists</td>
                         </tr>
                         <tr>
-                            <td onclick="window.location.href='/Tracks.aspx'">Tracks</td>
+                            <td onclick="window.location.href='<%= Page.ResolveUrl("~/Albums.aspx") %>'">Albums</td>
                         </tr>
                         <tr>
-                            <td onclick="window.location.href='/Genres.aspx'">Genres</td>
+                            <td onclick="window.location.href='<%= Page.ResolveUrl("~/Tracks.aspx") %>'">Tracks</td>
                         </tr>
                         <tr>
-                            <td onclick="window.location.href='/RecordCompanies.aspx'">Record companies</td>
+                            <td onclick="window.location.href='<%= Page.ResolveUrl("~/Genres.aspx") %>'">Genres</td>
                         </tr>
                         <tr>
-                            <td onclick="window.location.href='/About.aspx'">About</td>
+                            <td onclick="window.location.href='<%= Page.ResolveUrl("~/RecordCompanies.aspx") %>'">Record companies</td>
                         </tr>
-                        <tr id="userSettings" runat="server">
-                            <td onclick="window.location.href='/EditPages/UserSettings.aspx'">User settings</td>
+                        <tr>
+                            <td onclick="window.location.href='<%= Page.ResolveUrl("~/About.aspx") %>'">About</td>
+                        </tr>
+                        <tr id="userSettings" >
+                            <td onclick="window.location.href='<%= Page.ResolveUrl("~/EditPages/UserSettings.aspx") %>'">User settings</td>
                         </tr>
                     </table>
                 </div>

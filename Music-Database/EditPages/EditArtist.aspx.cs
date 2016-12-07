@@ -15,6 +15,7 @@ public partial class EditArtist : System.Web.UI.Page {
             IniEditArtist();
             IniDDL();
         }
+        Session["currentpage"] = "Edit";
     }
 
     protected void IniEditArtist() {

@@ -17,7 +17,9 @@ public partial class Playlists : System.Web.UI.Page {
 
         if (!IsPostBack) {
             Init();
+
         }
+        Session["currentpage"] = "Edit";
     }
 
     protected void Init() {
@@ -104,7 +106,7 @@ public partial class Playlists : System.Web.UI.Page {
     }
 
     protected void btnAddPlaylist_Click(object sender, EventArgs e) {
-        Response.Redirect("Tracks.aspx");
+        Response.Redirect("~/Tracks.aspx");
     }
 
     protected void gvPlaylist_SelectedIndexChanged(object sender, EventArgs e) {
