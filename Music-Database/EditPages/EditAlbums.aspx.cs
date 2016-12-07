@@ -14,7 +14,7 @@ public partial class EditAlbums : System.Web.UI.Page {
         try {
             base.ProcessRequest(context);
         } catch (HttpRequestValidationException ex) {
-            context.Response.Redirect("HandleValidationError.aspx");
+            context.Response.Redirect("~/HandleValidationError.aspx");
         }
 
     }
