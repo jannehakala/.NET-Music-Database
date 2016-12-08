@@ -75,27 +75,29 @@ public partial class Tracks : System.Web.UI.Page {
         album = row.Cells[3].Text;
         year = row.Cells[4].Text;
 
-  
         try {
 
-            if (newFile == string.Empty) {
-                newFile = "Playlist " + DateTime.Now.ToString("HH:mm:ss");
-            }
-            string path = Server.MapPath("~/App_Data/" + newFile + ".xml");
-            if (!File.Exists(path)) {
-                XDocument doc = new XDocument(new XElement("playlist",
-                                             new XElement("track",
-                                                 new XElement("Track", track),
-                                                 new XElement("Artist", artist),
-                                                 new XElement("Album", album),
-                                                 new XElement("Year", year))));
+            if (newFile != string.Empty) {
 
-                doc.Save(path);
-                mpeAddToPlaylist.Hide();
-                lblMessages.Text = "Created a playlist: " + newFile + " and track: " + track + " added to the list.";
+                string path = Server.MapPath("~/App_Data/" + newFile + ".xml");
+                if (!File.Exists(path)) {
+                    XDocument doc = new XDocument(new XElement("playlist",
+                                                 new XElement("track",
+                                                     new XElement("Track", track),
+                                                     new XElement("Artist", artist),
+                                                     new XElement("Album", album),
+                                                     new XElement("Year", year))));
+
+                    doc.Save(path);
+                    mpeAddToPlaylist.Hide();
+                    lblMessages.Text = "Created a playlist: " + newFile + " and track: " + track + " added to the list.";
+                } else {
+                    mpeAddToPlaylist.Show();
+                    lblMessagePopUp.Text = newFile + " alredy exists.";
+                }
             } else {
                 mpeAddToPlaylist.Show();
-                lblMessagePopUp.Text = newFile + " alredy exists.";
+                lblMessagePopUp.Text = "Fill fields first.";
             }
         } catch (Exception ex) {
             lblMessagePopUp.Text = ex.Message;
